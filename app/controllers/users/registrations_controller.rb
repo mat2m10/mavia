@@ -15,9 +15,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @user = current_user
+    @current_question = params[:question].to_i || 1
+  end
+
+  def update_question_responses
+    @user = current_user
+    @user.update(user_params)
+
+    # Redirect to the next question or thank you message
+    if @user.completed_all_questions?
+      redirect_to root_path, notice: 'Thank you for answering all the questions.'
+    else
+      redirect_to answer_questions_path(question: @user.next_question)
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :"seating_question_#{@current_question}",
+      # ... repeat for each question up to 10
+    )
+  end
 
   # PUT /resource
   # def update

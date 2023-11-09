@@ -1,0 +1,10 @@
+Yow <%= @user.email%> lets play a game which will help us decide on your seating during diner
+
+Are you more hot or cold?
+
+<%= simple_form_for @user, url: update_question_response_user_path, method: :patch do |f| %>
+  <p>Yow <%= @user.email %> let's play a game which will help us decide on your seating during dinner.</p>
+  <p>Are you more salt or paprika?</p>
+  <%= f.input :seating_question_response, as: :string %>
+  <%= f.submit 'Submit' %>
+<% end %>
