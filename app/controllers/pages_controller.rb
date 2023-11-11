@@ -29,10 +29,15 @@ class PagesController < ApplicationController
 
     def seating
         @user = current_user
+        @question = Question.find(@user.current_question_id) || Question.first # Assuming you want to start with the first question if none is set
     end
 
     def accomodation
     end
+
+    def travel
+    end
+
 
     def gift
     end

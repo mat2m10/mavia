@@ -10,35 +10,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    resource.current_question_id = 1 # Set the default current_question to 1
+    resource.save
+  end
 
   # GET /resource/edit
-  def edit
+
+  def seating
     @user = current_user
-    @current_question = params[:question].to_i || 1
+    @question = @user.current_question_id || Question.first # Assuming you want to start with the first question if none is set
   end
 
-  def update_question_responses
+  def update_current_question
     @user = current_user
-    @user.update(user_params)
+    question_number = params[:question_id].to_i
+    
+    column_name = "seating_question_#{question_number}"
+    @user.update(column_name.to_sym => params[:selected_option])
 
-    # Redirect to the next question or thank you message
-    if @user.completed_all_questions?
-      redirect_to root_path, notice: 'Thank you for answering all the questions.'
-    else
-      redirect_to answer_questions_path(question: @user.next_question)
-    end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(
-      :"seating_question_#{@current_question}",
-      # ... repeat for each question up to 10
-    )
+    @user.update(current_question_id: question_number + 1)
+    redirect_to seating_path
   end
 
   # PUT /resource

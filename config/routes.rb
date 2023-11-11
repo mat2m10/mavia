@@ -13,12 +13,14 @@ Rails.application.routes.draw do
   get "program", to: "pages#program", as: :program
   get "seating", to: "pages#seating", as: :seating
   get "accomodation", to: "pages#accomodation", as: :accomodation
+  get "travel", to: "pages#travel", as: :travel
+
   get "gift", to: "pages#gift", as: :gift
   get "guests", to: "guests#index"
   get "guests/:id", to: "guests#show"
 
-  resources :users do
-    get 'ask_question', on: :member
-    patch 'update_question_response', on: :member
+  devise_scope :user do
+    get 'seating', to: 'users/registrations#seating'
+    put 'update_current_question', to: 'users/registrations#update_current_question'
   end
 end

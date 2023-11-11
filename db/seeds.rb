@@ -1,9 +1,48 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+User.create!(
+  email: 'mat@dh.com',
+  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Matthieu',
+  current_question_id: 1 # Set the desired current question ID for this user
+)
+
+Question.create!(
+  question_text: 'Salt or Paprika',
+  option_1: 'salt',
+  option_2: 'paprika'
+)
+
+Question.create!(
+  question_text: 'Hot or Cold',
+  option_1: 'hot',
+  option_2: 'cold'
+)
+
+Question.create!(
+  question_text: 'Cat or Dog',
+  option_1: 'cat',
+  option_2: 'dog'
+)
+
+Question.create!(
+  question_text: 'Burger or Pizza',
+  option_1: 'burger',
+  option_2: 'pizza'
+)
+
+# Add more questions as needed
+Question.create!(
+  question_text: 'Whisky or Gin',
+  option_1: 'whisky',
+  option_2: 'gin'
+)
+
+Question.create!(
+  question_text: 'The end',
+  option_1: 'Nan',
+  option_2: 'Nan'
+)
+
+# Add 11 more questions with similar structure
+# ...
+
+puts 'Seeds created successfully!'

@@ -1,10 +1,85 @@
-Yow <%= @user.email%> lets play a game which will help us decide on your seating during diner
+<style>
+  .clickable-image-container {
+    width: 150px; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
+    overflow: hidden;
+    margin: 10px; /* Adjust the margin for spacing between images */
+    padding: 20px; /* Add more padding to the container */
+  }
 
-Are you more hot or cold?
+  .clickable-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
+  }
 
-<%= simple_form_for @user, url: update_question_response_user_path, method: :patch do |f| %>
-  <p>Yow <%= @user.email %> let's play a game which will help us decide on your seating during dinner.</p>
-  <p>Are you more salt or paprika?</p>
-  <%= f.input :seating_question_response, as: :string %>
-  <%= f.submit 'Submit' %>
+  .clickable-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto; /* Center horizontally */
+    margin-top: 50vh; /* Center vertically */
+    transform: translateY(-90%);
+  }
+  
+  .center-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto; /* Center horizontally */
+    margin-top: 40vh; /* Center vertically */
+  }
+  
+  .image-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add space above the images */
+  }
+</style>
+
+
+
+<% if @question.id == 6 %>
+
+<div class="center-text">
+  <h1>Whouhouw, you answered everything!</h1>
+<div>
+<% else %>
+<div class="center-container">
+  <p>Hello <%= @user.name %>! Let's play a game to decide on your seating during dinner.</p>
+  <h1><%= @question.question_text %></h1>
+  <%= form_tag(update_current_question_path, method: :put, id: 'question-form') do %>
+    <div class="image-row">
+      <div class="clickable-image-container">
+        <%= image_tag @question.option_1, class: 'option-image img-fluid rounded clickable-image', data: { value: @question.option_1 } %>
+        <%= radio_button_tag :selected_option, @question.option_1, class: 'option-radio', style: 'display:none;' %>
+      </div>
+
+      <div class="clickable-image-container">
+        <%= image_tag @question.option_2, class: 'option-image img-fluid rounded clickable-image', data: { value: @question.option_2 } %>
+        <%= radio_button_tag :selected_option, @question.option_2, class: 'option-radio', style: 'display:none;' %>
+      </div>
+    </div>
+
+    <%= hidden_field_tag :question_id, @question.id %>
+  <% end %>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.clickable-image').on('click', function() {
+        $(this).siblings('.option-radio').prop('checked', true).trigger('click');
+        $('#question-form').submit();
+      });
+    });
+  </script>
 <% end %>
