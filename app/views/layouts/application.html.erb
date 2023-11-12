@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <% @phase = 1%>
+    <% @phase = current_user&.phase || 1%>
     <%= render "shared/navbar" %>
     
     <%= yield %>

@@ -20,7 +20,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def seating
     @user = current_user
-    @question = @user.current_question_id || Question.first # Assuming you want to start with the first question if none is set
+    @question = Question.find(@user.current_question_id) || Question.first # Assuming you want to start with the first question if none is set
+    render 'pages/seating'
   end
 
   def update_current_question

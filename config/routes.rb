@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users', path_names: {
-  sign_up: 'new_bros'
-  }, controllers: {
-    sessions: 'users/sessions', registrations: 'users/registrations'
-  }
+  devise_for :users
+  namespace :admin do
+    resources :users, only: [:create]
+  end
+  
+  match '/hidden', to: 'pages#hidden', as: :hidden, via: [:get, :post]
+
   root to: "pages#home"
   get '/users/sign_out', to: 'sessions#destroy', as: :sign_out
-  get '/hidden', to: 'pages#hidden', as: :hidden
   
   get "about", to: "pages#about", as: :about
   get "rsvp", to: "pages#rsvp", as: :rsvp
   get "program", to: "pages#program", as: :program
-  get "seating", to: "pages#seating", as: :seating
+  
+  # Remove the duplicate 'seating' route
   get "accomodation", to: "pages#accomodation", as: :accomodation
   get "travel", to: "pages#travel", as: :travel
 
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   get "guests/:id", to: "guests#show"
 
   devise_scope :user do
+    # Keep the 'seating' route within the users/registrations scope
     get 'seating', to: 'users/registrations#seating'
     put 'update_current_question', to: 'users/registrations#update_current_question'
   end

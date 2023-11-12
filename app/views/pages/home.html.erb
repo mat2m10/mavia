@@ -58,7 +58,7 @@
     }
 </style>
 
-<% @phase = 1 %>
+<% @phase = current_user&.phase || 1 %>
 
 <div class="homepage">
   <% if @phase == 1 %>

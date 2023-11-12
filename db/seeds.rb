@@ -1,17 +1,29 @@
-User.create!(
+matthieu = User.create!(
   email: 'mat@dh.com',
   password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Matthieu',
-  current_question_id: 1 # Set the desired current question ID for this user
+  current_question_id: 1, # Set the desired current question ID for this user
+  is_admin: true,
+  phase: 1
 )
 
+# Create Harold without admin privileges
 User.create!(
   email: 'har@loop.com',
   password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Harold',
-  current_question_id: 1 # Set the desired current question ID for this user
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1
 )
 
+# Create Harold without admin privileges
+User.create!(
+  email: 'ami@dg.com',
+  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Amelie',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 2
+)
 Question.create!(
   question_text: 'Salt or Paprika',
   option_1: 'salt',
