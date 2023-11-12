@@ -5,6 +5,13 @@ User.create!(
   current_question_id: 1 # Set the desired current question ID for this user
 )
 
+User.create!(
+  email: 'har@loop.com',
+  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Harold',
+  current_question_id: 1 # Set the desired current question ID for this user
+)
+
 Question.create!(
   question_text: 'Salt or Paprika',
   option_1: 'salt',

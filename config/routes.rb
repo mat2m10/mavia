@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "travel", to: "pages#travel", as: :travel
 
   get "gift", to: "pages#gift", as: :gift
+  get "svtd", to: "pages#svtd", as: :svtd
+
   get "guests", to: "guests#index"
   get "guests/:id", to: "guests#show"
 

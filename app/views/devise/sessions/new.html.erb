@@ -1,26 +1,105 @@
-<div class="container">
-  <h2>Log in</h2>
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" },
-                  label_html: { class: "sr-only" }, # Hide the label for screen readers
-                  wrapper_html: { class: "form-group" }, # Bootstrap form-group class
-                  input_html: { class: "form-control", placeholder: "Email" } # Bootstrap form-control class
-      %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" },
-                  label_html: { class: "sr-only" }, # Hide the label for screen readers
-                  wrapper_html: { class: "form-group" }, # Bootstrap form-group class
-                  input_html: { class: "form-control", placeholder: "Password" } # Bootstrap form-control class
-      %>
-    </div>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2c3e50; /* Set a background color for the entire page */
+  }
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn btn-primary btn-block" %>
-    </div>
-  <% end %>
+  .navbar {
+    background-color: transparent;
+  }
+
+  .centerbutton {
+    text-align: center;
+    color: #ffffff; /* White text */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    background-color: #404040; /* Light gray background */
+  }
+
+  .centerbutton h2,
+  .centerbutton h1,
+  .centerbutton .btn {
+    margin-bottom: 20px;
+    color: #ffffff; /* White text */
+  }
+
+  .centerbutton .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid #8b0000; /* Dark red border */
+    border-radius: 5px;
+    color: #ffffff; /* White text */
+    background-color: #a52a2a; /* Dark red background */
+    transition: background-color 0.3s ease;
+  }
+
+  .centerbutton .btn:hover {
+    background-color: #8b0000; /* Darker red on hover */
+  }
+
+  /* Apply the same styles to the login form */
+  .form-signin {
+    color: #ffffff; /* White text */
+    background: rgba(64, 64, 64, 0.5); /* Slightly transparent light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+
+  .form-signin input,
+  .form-signin button {
+    margin-bottom: 10px;
+    color: #333333; /* Dark gray text */
+    outline: none; /* Remove the default outline */
+  }
+
+  .form-signin input:focus:not(:placeholder-shown),
+  .form-signin button:focus:not(:placeholder-shown) {
+    color: #333333; /* Dark gray text */
+  }
+
+  .form-signin button {
+    background-color: #404040; /* Light gray background */
+    transition: background-color 0.3s ease;
+  }
+
+  .form-signin button:hover {
+    background-color: #333333; /* Darker gray on hover */
+  }
+</style>
+
+<div class="container-fluid centerbutton">
+  <div class="text-center">
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
+      <div class="form-label-group">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", class: "form-control", placeholder: "Email" },
+                    label_html: { class: "sr-only" },
+                    wrapper_html: { class: "form-group" }
+        %>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password", class: "form-control", placeholder: "Password" },
+                    label_html: { class: "sr-only" },
+                    wrapper_html: { class: "form-group" }
+        %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Log in", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+    <% end %>
+  </div>
 </div>

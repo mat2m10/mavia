@@ -1,3 +1,78 @@
+<style>
+.navbar {
+  background-color: #C8DCFF;
+  color: #000000; /* or #333333 for dark gray text */
+  font-weight: bold;
+}
+</style>
+
+<% if @phase == 1%>
+<nav class="navbar navbar-expand-sm navbar-light">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav w-100">
+        <% if user_signed_in? %>
+          <li class="nav-item mr-auto">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item mx-auto">
+            <%= link_to "", svtd_path, class: "nav-link"%>
+          </li>
+
+          <li class="nav-item ml-auto">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<%end%>
+<%if @phase ==2%>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav w-100">
+        <% if user_signed_in? %>
+          <li class="nav-item mr-auto">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item mx-auto">
+            <%= link_to "Program", program_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item mx-auto">
+            <%= link_to "RSVP", rsvp_path, class: "nav-link" %>
+          </li>          
+          <li class="nav-item mx-auto">
+            <%= link_to "Travel Information", travel_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item mx-auto">
+            <%= link_to "Accommodation", accomodation_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item mx-auto">
+            <%= link_to "Gifts", gift_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item mx-auto">
+            <%= link_to "Seatings", seating_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<%end%>
+
+<% if @phase == 3%>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
 
@@ -6,6 +81,10 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+
+          <li>
+            <%= link_to "Save the Date", svtd_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "Program", program_path, class: "nav-link" %>
@@ -34,3 +113,4 @@
 
   </div>
 </nav>
+<%end%>

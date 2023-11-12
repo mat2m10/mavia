@@ -41,4 +41,7 @@ class PagesController < ApplicationController
 
     def gift
     end
+
+    def svtd
+    end
 end
