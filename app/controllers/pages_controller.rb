@@ -6,10 +6,7 @@ class PagesController < ApplicationController
         @name = current_user.name
     end
 
-    def hidden
-        @users = User.all
-        @new_user = User.new
-    end
+
 
     def about
         guests = User.all
@@ -31,11 +28,6 @@ class PagesController < ApplicationController
     def program
     end
 
-    def seating
-        @user = current_user
-        @question = Question.find(@user.current_question_id) || Question.first # Assuming you want to start with the first question if none is set
-    end
-
     def accomodation
     end
 
@@ -48,16 +40,6 @@ class PagesController < ApplicationController
 
     def svtd
     end
-
-    def create_user
-        @new_user = User.new(user_params)
-        if @new_user.save
-          flash[:notice] = 'User was successfully created.'
-          redirect_to hidden_path
-        else
-          render :hidden
-        end
-      end
     
     private
 
@@ -66,9 +48,5 @@ class PagesController < ApplicationController
           flash[:error] = 'You do not have permission to access this page.'
           redirect_to root_path
         end
-      end
-    
-      def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :name, :is_admin)
       end
 end

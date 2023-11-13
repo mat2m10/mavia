@@ -1,19 +1,45 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
+  before_action :authenticate_user!
+  before_action :authenticate_user_for_hidden_and_seating, only: [:hidden, :seating]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
+  def hidden
+    @users = User.all
+    @user = current_user
+    @new_user = User.new()
+  
+    if request.post?
+      @new_user = User.new(user_params)
+      if @new_user.save
+        # Handle successful user creation
+        redirect_to hidden_path, notice: 'User was successfully created.'
+      else
+        redirect_to hidden_path, notice: 'Failed to create user.'
+      end
+    else
+      render 'pages/hidden'
+    end
+  end
+  
+  def update
+    if current_user.update(user_params)
+      redirect_to root_path, notice: 'User data updated successfully.'
+    else
+      render :edit
+    end
+  end
+
   # POST /resource
   def create
-    super
-    resource.current_question_id = 1 # Set the default current_question to 1
-    resource.save
+    super do
+      Rails.logger.debug "Params: #{params.inspect}"
+      Rails.logger.debug "Errors: #{resource.errors.full_messages}" if resource.errors.any?
+      resource.current_question_id = 1 # Set the default current_question to 1
+      resource.save
+    end
   end
 
   # GET /resource/edit
@@ -35,45 +61,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to seating_path
   end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
-
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     sign_out(resource)
     new_user_registration_path
   end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  private
+
+  def authenticate_user_for_hidden_and_seating
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :email, :password, :password_confirmation, :name, :is_admin,
+      :seating_question_1, :seating_question_2, :seating_question_3,
+      :seating_question_4, :seating_question_5, :seating_question_6,
+      :seating_question_7, :seating_question_8, :seating_question_9,
+      :seating_question_10, :seating_question_11, :seating_question_12,
+      :seating_question_13, :seating_question_14, :seating_question_15,
+      :current_question, :title, :current_question_id, :telephone_number,
+      :family_name, :address, :address_nr, :country, :city, :phase,
+      :apartment, :postal_code
+    )
+  end
 end

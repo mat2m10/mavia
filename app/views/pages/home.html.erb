@@ -1,77 +1,62 @@
 <style>
-    .homepage {
-        /* Set your background image here */
-        background-image: url('<%= image_path("boat_bkgr.jpg") %>');
-        /* Adjust background properties as needed */
-        background-size: cover;
-        background-position: center;
-        background-position-y: 70%; /* Adjust this value to crop more from the top */
-        background-repeat: no-repeat;
-        margin: 0; /* Remove default margin */
-        padding: 0; /* Remove default padding */
-        font-family: Arial, sans-serif; /* Choose your preferred font */
-        height: 100vh; /* Use viewport height to fill the entire screen */
-        position: relative;
-        overflow: hidden;
-    }
+  .homepage {
+    display: flex; /* Use flexbox to create a flexible container */
+  }
 
-    .homepage h2,
-    .homepage h1,
-    .homepage .btn {
-        /* Add styles for your content on top of the background image */
-        color: white; /* Set text color to be visible on the background */
-    }
-        .centerbutton {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: #C8DCFF; /* Set text color to the desired blue shade */
-        background: rgba(0, 0, 0, 0.5); /* Slightly transparent white background */
-        padding: 20px; /* Add padding to the div */
-        border-radius: 10px; /* Add rounded corners */
-        max-width: 600px; /* Limit the width for better readability */
-    }
+  .subhomepage1 {
+    flex: 1; /* Take all available space */
+    background-image: url('<%= image_path("us") %>') center/cover; 
+  }
 
-    .centerbutton h2,
-    .centerbutton h1,
-    .centerbutton .btn {
-        margin-bottom: 20px; /* Add some spacing between elements */
-        color: #C8DCFF; /* Set text color to the desired blue shade */
-    }
-
-    .centerbutton .btn {
-        text-decoration: none;
-        padding: 10px 20px;
-        font-size: 18px;
-        border: 2px solid #333; /* Dark gray border */
-        border-radius: 5px;
-        color: #C8DCFF; /* Set text color to the desired blue shade */
-        background-color: #6B2527; /* Burgundy red background */
-        transition: background-color 0.3s ease;
-    }
-
-    .centerbutton .btn:hover {
-        background-color: #5B1517; /* Darker red on hover */
-        color: #C8DCFF; /* White text color on hover */
-    }
+  .subhomepage2 {
+    flex: 1; /* Take all available space */
+  }
 </style>
 
 <% @phase = current_user&.phase || 1 %>
 
-<div class="homepage">
-  <% if @phase == 1 %>
-    <div class="centerbutton">
-      <h2>Hello <%= @name %></h2>
-      <h1>
-        Livia de Guerre 
-        &<br>
-        Matthieu de Hemptinne <br>
-        are tying the knot!
-      </h1>
-      <p>Please share your details to join in the celebration.</p>
-      <a href="<%= svtd_path %>" class="btn btn-primary">Save the Date</a>
+<% if @phase == 1 %>
+  <div class="homepage">
+    <div class="subhomepage1" style="background: url('<%= asset_url('us.jpg') %>') center/cover; height: 100vh;">
     </div>
-  <% end %>
-</div>
+    <div class="subhomepage2 h-100 d-flex flex-column">
+      <div class="savethedate-container text-center">
+        <div class="savethedatetext">
+          <h1>Save The Date</h1>
+        </div>
+        <div class="savethedateform">
+          <%= form_for(current_user, url: user_registration_path, method: :patch) do |f| %>
+            <div class="form-group">
+              <%= f.label :country %>
+              <%= f.text_field :country, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :city %>
+              <%= f.text_field :city, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :postal_code %>
+              <%= f.text_field :postal_code, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :address_and_street_number, "Address and Street Number".freeze %>
+              <%= f.text_field :address, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :apartment %>
+              <%= f.text_field :apartment, class: 'form-control' %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.submit 'Save', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

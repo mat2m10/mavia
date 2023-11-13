@@ -1,21 +1,107 @@
-<h2>Sign up new Invites</h2>
+<div class="container">
+    <!-- Registration Form Section -->
+    <div class="row">
+      <!-- Registration Form Section -->
+      <div class="col-md-6">
+        <h2 class="text-center">Sign up new Invites</h2>
 
-<%= simple_form_for(@new_user, url: hidden_path, method: :post) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(@new_user, url: hidden_path, method: :post) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
-    <%= f.input :password, required: true, hint: "Minimum #{@minimum_password_length} characters", input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-    <%= f.input :name, required: true, input_html: { autocomplete: "name" } %>
-    <%= f.input :is_admin, as: :boolean, label: 'Admin' %>
+          <div class="form-group">
+            <%= f.label :email, 'Email' %>
+            <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }, label: false, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, 'Password' %>
+            <%= f.input :password, required: true, hint: "Minimum #{@minimum_password_length} characters", input_html: { autocomplete: "new-password" }, label: false, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, 'Password Confirmation' %>
+            <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" }, label: false, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :name, 'Name' %>
+            <%= f.input :name, required: true, input_html: { autocomplete: "name" }, label: false, class: "form-control" %>
+          </div>
+
+          <div class="form-check">
+            <%= f.check_box :is_admin, class: "form-check-input" %>
+            <%= f.label :is_admin, class: "form-check-label" %>
+          </div>
+
+          <div class="form-group mt-3">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <!-- Invitees List Section -->
+<!-- Invitees List Section -->
+<div class="col-md-6">
+  <h2 class="text-center">Invitees List</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.is_admin ? 'Admin' : 'User' %></td>
+          <td>
+            <!-- Edit Button Triggering Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= user.id %>">
+              Edit
+            </button>
+
+            <!-- Edit Modal -->
+            <div class="modal fade" id="editModal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit User Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form for updating user information -->
+                    <%= form_for(user, url: registration_path(user), method: :patch, remote: true) do |f| %>
+                      <div class="form-group">
+                        <%= f.label :name, 'Name' %>
+                        <%= f.text_field :name, class: 'form-control' %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<% @users.each do |user| %>
-  <%= user.email %> <%= user.name %> <%= user.is_admin %><br>
-<% end %>
+</div>
