@@ -26,10 +26,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def update
     if current_user.update(user_params)
+      @submitted = true
+      session[:submitted] = true
       redirect_to root_path, notice: 'User data updated successfully.'
     else
       render :edit
     end
+  end
+
+  def reset_submission
+    @submitted = false
+    session[:submitted] = false # Set @submitted to false and update the session
+    redirect_to root_path
   end
 
   # POST /resource

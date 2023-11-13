@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     put 'update_current_question', to: 'users/registrations#update_current_question'
     get 'hidden', to: 'users/registrations#hidden'
     post 'hidden', to: 'users/registrations#hidden'
+    get 'reset_submission', to: 'users/registrations#reset_submission', as: 'reset_submission'
   end
 end

@@ -40,7 +40,13 @@ class PagesController < ApplicationController
 
     def svtd
     end
-    
+    def submit_form
+        # Process the form submission and save the data (if needed)
+        # ...
+      
+        # Set a flag to indicate that the form has been successfully submitted
+        @submitted = true
+    end
     private
 
     def check_admin
