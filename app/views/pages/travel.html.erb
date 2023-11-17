@@ -1,19 +1,18 @@
 <style>
-  .homepage {
+  .travelpage {
     display: flex;
     background-color: #b3d1ff;
   }
 
-  .subhomepage1 {
+  .subtravelpage1 {
     flex: 1;
-    background: url('<%= asset_url('us.jpg') %>') center/cover no-repeat;
     height: 80vh;
     margin: 2rem;
     box-sizing: border-box;
     border-radius: 20px;
   }
 
-  .subhomepage2 {
+  .subtravelpage2 {
     flex: 1;
     display: flex;
     align-items: center; /* Align items vertically */
@@ -21,7 +20,7 @@
     background-color: #b3d1ff;
   }
 
-  .savethedate-container {
+  .map-container {
     background: #C8DCFF;
     padding: 2rem;
     margin: 2rem 0;
@@ -31,42 +30,6 @@
     margin: auto; /* Center the container */
   }
 
-  .form-group {
-    display: flex; /* Use flexbox for inline label and input */
-    margin-bottom: 1rem;
-    align-items: center; /* Align items to the center */
-  }
-
-  .form-group label {
-    flex: 0 0 150px; /* Fixed width for labels */
-    text-align: right; /* Align text to the right */
-    margin-right: 10px; /* Add space between label and input */
-  }
-
-  .form-control {
-    flex: 1; /* Input takes up the remaining space */
-    padding: 8px;
-    border: 1px solid #ccc; /* Style as needed */
-    border-radius: 4px;
-  }
-
-  .form-actions {
-    text-align: center;
-  }
-
-  .btn-primary {
-    background-color: #6B2527;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    transition: background-color 0.3s;
-  }
-
-  .btn-primary:hover {
-    background-color: #ce7c3f;
-  }
 
   /* Add other styles as needed to match the mockup */
 </style>
@@ -74,23 +37,31 @@
 <% @phase = current_user&.phase || 1 %>
 
 <% if @phase == 1 %>
-  <div class="homepage">
-    <div class="subhomepage1">
-    </div>
-    <div class="subhomepage2">
-      <div class="savethedate-container">
-    <!-- Display the "thank you" message -->
-          <div class="savethedatetext text-center">
-
+  <div class="travelpage">
+    <div class="subtravelpage1 w-100">
+      <!-- Bootstrap Carousel -->
+      <div id="ci" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <%= image_tag('liv.png', class: 'd-block w-100', alt: 'First slide', style: "border-radius: 20px;") %>
           </div>
-          <div class="savethedateform">
-            
+          <div class="carousel-item" data-bs-interval="5000">
+            <%= image_tag('math.png', class: 'd-block w-100', alt: 'Second slide', style: "border-radius: 20px;") %>
+          </div>
+        </div>
+        <!-- Removed the manual controls (prev and next) -->
+      </div>
+    </div>
+    <div class="subtravelpage2">
+      <div class="map-container">
+    <!-- Display the "thank you" message -->
+          <div class="map text-center", style="width: 100%; height: 600px;"
+                data-controller="map"
+                data-map-markers-value="<%= @markers.to_json %>"
+                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
           </div>
       </div>
     </div>
   </div>
-          <div class = "test", style="width: 100%; height: 600px;"
-                data-controller="map"
-                data-map-markers-value="<%= @markers.to_json %>"
-                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 <% end %>
