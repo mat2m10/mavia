@@ -79,24 +79,18 @@
     </div>
     <div class="subhomepage2">
       <div class="savethedate-container">
-        <% @submitted = session[:submitted] || false %>
-        <% if @submitted %>
     <!-- Display the "thank you" message -->
-          <div class="thank-you-message">
-            <p>Thank you for submitting! We hope to see you there.</p>
-            <%= link_to "Change your info?", reset_submission_path, class: 'btn btn-primary' %>
-          </div>
-        <% else %>
           <div class="savethedatetext text-center">
-            <h1></h1>
-            <h2>Save the 25th of May in your agenda to celebrate our bond with us!</h2>
-            <h5>We do need your information to send you a fancy card tho.</h5>
+
           </div>
           <div class="savethedateform">
             
           </div>
-          <%end%>
       </div>
     </div>
   </div>
+          <div class = "test", style="width: 100%; height: 600px;"
+                data-controller="map"
+                data-map-markers-value="<%= @markers.to_json %>"
+                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 <% end %>

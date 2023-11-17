@@ -32,6 +32,18 @@ class PagesController < ApplicationController
     end
 
     def travel
+    @markers = [
+        {
+            lat: 40.7128,  # Replace with the actual latitude for the first location
+            lng: -74.0060, # Replace with the actual longitude for the first location
+            info_window_html: '<p>Marker 1 Info</p>' # Optional
+        },
+        {
+            lat: 34.0522,  # Replace with the actual latitude for the second location
+            lng: -118.2437, # Replace with the actual longitude for the second location
+            info_window_html: '<p>Marker 2 Info</p>' # Optional
+        }
+]
     end
 
 
