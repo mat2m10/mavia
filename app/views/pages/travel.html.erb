@@ -1,0 +1,102 @@
+<style>
+  .homepage {
+    display: flex;
+    background-color: #b3d1ff;
+  }
+
+  .subhomepage1 {
+    flex: 1;
+    background: url('<%= asset_url('us.jpg') %>') center/cover no-repeat;
+    height: 80vh;
+    margin: 2rem;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  .subhomepage2 {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    padding: 2rem;
+    background-color: #b3d1ff;
+  }
+
+  .savethedate-container {
+    background: #C8DCFF;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    width: 80%; /* Limit the width of the container */
+    max-width: 600px; /* Set a max-width if needed */
+    margin: auto; /* Center the container */
+  }
+
+  .form-group {
+    display: flex; /* Use flexbox for inline label and input */
+    margin-bottom: 1rem;
+    align-items: center; /* Align items to the center */
+  }
+
+  .form-group label {
+    flex: 0 0 150px; /* Fixed width for labels */
+    text-align: right; /* Align text to the right */
+    margin-right: 10px; /* Add space between label and input */
+  }
+
+  .form-control {
+    flex: 1; /* Input takes up the remaining space */
+    padding: 8px;
+    border: 1px solid #ccc; /* Style as needed */
+    border-radius: 4px;
+  }
+
+  .form-actions {
+    text-align: center;
+  }
+
+  .btn-primary {
+    background-color: #6B2527;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #ce7c3f;
+  }
+
+  /* Add other styles as needed to match the mockup */
+</style>
+
+<% @phase = current_user&.phase || 1 %>
+
+<% if @phase == 1 %>
+  <div class="homepage">
+    <div class="subhomepage1">
+    </div>
+    <div class="subhomepage2">
+      <div class="savethedate-container">
+        <% @submitted = session[:submitted] || false %>
+        <% if @submitted %>
+    <!-- Display the "thank you" message -->
+          <div class="thank-you-message">
+            <p>Thank you for submitting! We hope to see you there.</p>
+            <%= link_to "Change your info?", reset_submission_path, class: 'btn btn-primary' %>
+          </div>
+        <% else %>
+          <div class="savethedatetext text-center">
+            <h1></h1>
+            <h2>Save the 25th of May in your agenda to celebrate our bond with us!</h2>
+            <h5>We do need your information to send you a fancy card tho.</h5>
+          </div>
+          <div class="savethedateform">
+            
+          </div>
+          <%end%>
+      </div>
+    </div>
+  </div>
+<% end %>
