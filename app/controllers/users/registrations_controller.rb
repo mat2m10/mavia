@@ -33,7 +33,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :edit
     end
   end
-
+  def edit
+    @user = User.find(params[:id])
+    # Additional setup
+  end
+  
+  def update2
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      # Handle successful update
+    else
+      # Handle errors
+    end
+  end
   def reset_submission
     @submitted = false
     session[:submitted] = false # Set @submitted to false and update the session
@@ -91,7 +103,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :seating_question_13, :seating_question_14, :seating_question_15,
       :current_question, :title, :current_question_id, :telephone_number,
       :family_name, :address, :address_nr, :country, :city, :phase,
-      :apartment, :postal_code
+      :apartment, :postal_code, :vip, :personal_message_us, :personal_message_them
     )
   end
 end

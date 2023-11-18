@@ -4,49 +4,64 @@
     background-color: #b3d1ff;
   }
 
-  .subhomepage1 {
+  .subhomepage1,
+  .subhomepage2,
+  .thank-you-message {
     flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .subhomepage1 {
     background: url('<%= asset_url('us.jpg') %>') center/cover no-repeat;
-    height: 80vh;
     margin: 2rem;
     box-sizing: border-box;
     border-radius: 20px;
   }
 
   .subhomepage2 {
-    flex: 1;
-    display: flex;
-    align-items: center; /* Align items vertically */
     padding: 2rem;
     background-color: #b3d1ff;
   }
 
+.thank-you-message {
+    background-color: #C8DCFF;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 20px;
+    min-height: 700px; /* Set a minimum height to ensure it doesn't shrink */
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* This line is added to align items vertically */
+    align-items: center; /* This will center the items horizontally */
+    justify-content: center; /* Optionally add this to center items vertically as well */
+}
+
   .savethedate-container {
     background: #C8DCFF;
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: 8px;
-    width: 80%; /* Limit the width of the container */
-    max-width: 600px; /* Set a max-width if needed */
-    margin: auto; /* Center the container */
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 20px;
+    width: 100%;
+    margin: auto;
   }
 
   .form-group {
-    display: flex; /* Use flexbox for inline label and input */
+    display: flex;
     margin-bottom: 1rem;
-    align-items: center; /* Align items to the center */
+    align-items: center;
   }
 
   .form-group label {
-    flex: 0 0 150px; /* Fixed width for labels */
-    text-align: right; /* Align text to the right */
-    margin-right: 10px; /* Add space between label and input */
+    flex: 0 0 150px;
+    text-align: right;
+    margin-right: 10px;
   }
 
   .form-control {
-    flex: 1; /* Input takes up the remaining space */
+    flex: 1;
     padding: 8px;
-    border: 1px solid #ccc; /* Style as needed */
+    border: 1px solid #ccc;
     border-radius: 4px;
   }
 
@@ -62,13 +77,16 @@
     border-radius: 5px;
     width: 100%;
     transition: background-color 0.3s;
+
   }
 
   .btn-primary:hover {
     background-color: #ce7c3f;
   }
 
-  /* Add other styles as needed to match the mockup */
+  .btn-primary:active {
+      background-color: #3e2d2b !important; /* Replace with the green color you want */
+  }
 </style>
 
 <% @phase = current_user&.phase || 1 %>
@@ -89,8 +107,12 @@
         <% else %>
           <div class="savethedatetext text-center">
             <h1>Hello my dear <%= @current_user.name %>!</h1>
-            <h2>Save the 25th of May in your agenda to celebrate our bond with us!</h2>
-            <h5>We do need your information to send you a fancy card tho.</h5>
+            <h2><%= @current_user.personal_message_us %></h2>
+            <% if  @current_user.vip == 2%>
+              <h2>Save the 25th of May in your agenda to celebrate our bond with us!</h2>
+            <% else %>
+              <h2>Save the 24th & 25th of May in your agenda!</h2>
+            <% end%>
           </div>
           <div class="savethedateform">
             <%= form_for(@current_user, url: user_registration_path, method: :patch) do |f| %>
@@ -105,13 +127,9 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :family_name, 'Family name:', class: 'control-label' %>
+                <%= f.label :family_name, 'Family Name:', class: 'control-label' %>
                 <%= f.text_field :family_name, class: 'form-control' %>
               </div>
-
-
-
-              
 
 
               <div class="form-group">
@@ -125,7 +143,7 @@
               </div>
 
               <div class="form-group">
-                <%= f.label :postal_code, 'Postal code:', class: 'control-label' %>
+                <%= f.label :postal_code, 'Postal Code:', class: 'control-label' %>
                 <%= f.text_field :postal_code, class: 'form-control' %>
               </div>
 
@@ -138,6 +156,11 @@
               <div class="form-group">
                 <%= f.label :country, 'Country:', class: 'control-label' %>
                 <%= f.text_field :country, class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :personal_message_them, 'Personal Message for Us?', class: 'control-label' %>
+                <%= f.text_area :personal_message_them, class: 'form-control' %>
               </div>
               <div class="form-actions">
                 <%= f.submit 'Save', class: 'btn btn-primary' %>

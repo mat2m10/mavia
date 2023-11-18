@@ -15,7 +15,7 @@
 
           <div class="form-group">
             <%= f.label :password, 'Password' %>
-            <%= f.input :password, required: true, hint: "Minimum #{@minimum_password_length} characters", input_html: { autocomplete: "new-password" }, label: false, class: "form-control" %>
+            <%= f.input :password, required: true, hint: " Minimum 6 characters", input_html: { autocomplete: "new-password" }, label: false, class: "form-control" %>
           </div>
 
           <div class="form-group">
@@ -28,6 +28,15 @@
             <%= f.input :name, required: true, input_html: { autocomplete: "name" }, label: false, class: "form-control" %>
           </div>
 
+          <div class="form-group">
+            <%= f.label :personal_message_us, 'Our personnal message?' %>
+            <%= f.input :personal_message_us, required: false, input_html: { autocomplete: "personal_message_us" }, label: false, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :vip, 'vip?' %>
+            <%= f.input :vip, required: false, input_html: { autocomplete: "vip" }, label: false, class: "form-control" %>
+          </div>
           <div class="form-check">
             <%= f.check_box :is_admin, class: "form-check-input" %>
             <%= f.label :is_admin, class: "form-check-label" %>
@@ -57,51 +66,56 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr>
-          <td><%= user.email %></td>
-          <td><%= user.name %></td>
-          <td><%= user.is_admin ? 'Admin' : 'User' %></td>
-          <td>
-            <!-- Edit Button Triggering Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= user.id %>">
-              Edit
-            </button>
-
-            <!-- Edit Modal -->
-            <div class="modal fade" id="editModal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit User Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <!-- Form for updating user information -->
-                    <%= form_for(user, url: registration_path(user), method: :patch, remote: true) do |f| %>
-                      <div class="form-group">
-                        <%= f.label :name, 'Name' %>
-                        <%= f.text_field :name, class: 'form-control' %>
-                      </div>
-
-                      <div class="form-group">
-                        <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
+            <tr>
+              <td><%= user.email %></td>
+              <td><%= user.name %></td>
+              <td><%= user.is_admin ? 'Admin' : 'User' %></td>
+              <td>
+                <!-- Toggle Edit Form Button -->
+                <button onclick="toggleEditForm(<%= user.id %>)" type="button" class="btn btn-primary">
+                  Toggle
+                </button>
+              </td>
+            </tr>
+            <tr id="editForm<%= user.id %>" style="display:none;">
+              <td colspan="4">
+              <%= simple_form_for(user, url: registration_path(user), method: :patch) do |f| %>
+              <div class="form-group">
+                <%= f.label :email, 'Email' %>
+                <%= f.input :email, required: true, label: false, input_html: { value: user.email, class: "form-control" } %>
               </div>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+              <div class="form-group">
+                <%= f.label :title, 'Title' %>
+                <%= f.input :title, required: true, label: false, input_html: { value: user.title, class: "form-control" } %>
+              </div>
+              <div class="form-group">
+                <%= f.label :name, 'Name' %>
+                <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control" } %>
+              </div>
+              
 
+              <div class="form-group">
+                <%= f.label :is_admin, 'Role' %>
+                <%= f.select :is_admin, [['Admin', true], ['User', false]], selected: user.is_admin, include_blank: false, label: false, class: "form-control" %>
+              </div>
+
+              <div class="form-group mt-3">
+                <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+<script>
+  function toggleEditForm(userId) {
+    var form = document.getElementById('editForm' + userId);
+    form.style.display = form.style.display === 'none' ? '' : 'none';
+  }
+</script>
