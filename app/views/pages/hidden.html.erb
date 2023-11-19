@@ -121,13 +121,15 @@
                 <%= f.label :address, 'Adress' %>
                 <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control" } %>
               </div>
+
+
               <div class="form-group">
-                <%= f.label :country, 'country' %>
-                <%= f.input :country, required: true, label: false, input_html: { value: user.country, class: "form-control" } %>
+                <%= f.label :pays, 'Country' %>
+                <%= f.input :pays, required: true, label: false, input_html: { value: user.pays, class: "form-control" } %>
               </div>
-              
+
               <div class="form-group">
-                <%= f.label :city, 'city' %>
+                <%= f.label :city, 'City' %>
                 <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control" } %>
               </div>
 

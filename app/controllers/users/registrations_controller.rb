@@ -111,7 +111,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :seating_question_10, :seating_question_11, :seating_question_12,
       :seating_question_13, :seating_question_14, :seating_question_15,
       :current_question, :title, :current_question_id, :telephone_number,
-      :family_name, :address, :address_nr, :country, :city, :phase,
+      :family_name, :address, :address_nr, :pays, :city, :phase,
       :apartment, :postal_code, :vip, :personal_message_us, :personal_message_them
     )
   end

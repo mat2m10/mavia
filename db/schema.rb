@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_155932) do
     t.string "family_name"
     t.string "address"
     t.string "address_nr"
-    t.string "country"
+    t.string "pays"
     t.string "city"
     t.boolean "is_admin", default: false
     t.integer "phase"
