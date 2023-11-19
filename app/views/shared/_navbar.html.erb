@@ -1,68 +1,92 @@
 <style>
-.navbar {
-  background-color: #C8DCFF;
-  color: #000000; /* or #333333 for dark gray text */
-  font-weight: bold;
+  .navbar {
+    background-color: #C8DCFF;
+    color: #000000;
+  }
+
+  body {
+    background-color: #b3d1ff;
+  }
+
+  /* Styles for larger screens */
+  @media screen and (min-width: 577px) {
+    .navbar-nav {
+      display: flex; /* Use flexbox for the nav items */
+      justify-content: space-between; /* Space between the groups */
+      width: 100%; /* Full width to spread items */
+      transition: display 0.5s ease; /* Smooth transition for the menu */
+    }
+
+    .nav-group {
+      display: flex; /* Use flexbox for the group */
+    }
+
+    .navbar-nav .nav-item {
+      margin: 0 5px; /* Adjust margins for spacing */
+    }
+
+    .navbar-nav .nav-link {
+      font-size: larger;
+      padding: 10px;
+      color: #6B2527; /* Normal font color */
+      text-decoration: none; /* Optional: Removes underline from links */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ce7c3f; /* Hover font color */
+    }
+  }
+.hamburger-icon {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  background: transparent;
 }
 
-.nav-item2 {
-  padding: 0 40px;
+.hamburger-line {
+  display: block;
+  width: 25px; /* Width of the line */
+  height: 3px; /* Height of the line */
+  background-color: #6B2527; /* Color of the line */
+  margin: 5px 0; /* Spacing between lines */
 }
-body {
-  background-color: #b3d1ff;
-}
-
+  /* Styles for smaller screens */
 @media screen and (max-width: 576px) {
-  nav.navbar.navbar-expand-sm.navbar-light .navbar-nav .nav-item {
-    margin: 0px;
-    padding: 5px; /* Adjusted */
+  .navbar-nav {
+    display: none;
   }
 
-  nav.navbar.navbar-expand-sm.navbar-light .navbar-nav .nav-link {
-    font-size: smaller; /* Adjusted */
-    padding: 0px; /* Adjusted */
-  }
-
-  nav.navbar.navbar-expand-sm.navbar-light .navbar-toggler {
-    /* Styles for the toggle button */
-  }
-
-  nav.navbar.navbar-expand-sm.navbar-light .navbar-toggler-icon {
-    /* Styles for the toggle icon */
+  /* Show the hamburger icon on small screens */
+  .hamburger-icon {
+    display: block;
   }
 }
 </style>
 
-<% if @phase == 1 %>
-<nav class="navbar navbar-expand-sm navbar-light">
-  <div class="container-fluid">
 
-    <!-- Navbar Toggler Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+
+<% if @phase == 1 %>
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <button class="hamburger-icon" onclick="toggleMenu()">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-      <ul class="navbar-nav w-100">
-        <% if user_signed_in? %>
-          <li class="nav-item mr-auto">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item2 mr-auto">
-            <%= link_to "Where is this thing happening?", travel_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item mx-auto">
-            <%= link_to "", svtd_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item ml-auto">
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="container-fluid">
+      <% if user_signed_in? %>
+        <div class="navbar-nav">
+          <div class="nav-group">
+            <%= link_to "Home", root_path, class: "nav-link nav-item" %>
+            <%= link_to "Where is this thing happening?", travel_path, class: "nav-link nav-item" %>
+          </div>
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link nav-item" %>
+        </div>
+      <% end %>
     </div>
-
-  </div>
-</nav>
+  </nav>
 <% end %>
 <%if @phase ==2%>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -146,4 +170,13 @@ body {
   </div>
 </nav>
 <%end%>
-
+<script>
+function toggleMenu() {
+  var nav = document.querySelector('.navbar-nav');
+  if (nav.style.display === "block") {
+    nav.style.display = "none";
+  } else {
+    nav.style.display = "block";
+  }
+}
+</script>

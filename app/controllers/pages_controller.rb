@@ -22,7 +22,7 @@ class PagesController < ApplicationController
         end
     end
 
-    def rsvp 
+    def rsvp
     end
 
     def program
