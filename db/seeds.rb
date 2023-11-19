@@ -60,7 +60,8 @@ User.create!(
   current_question_id: 1, # Set the desired current question ID for this user
   phase: 1,
   vip: 1,
-  personal_message_us: "You are so sexy"
+  personal_message_us: "You are so sexy",
+  is_admin: true,
 )
 
 
@@ -71,7 +72,8 @@ User.create!(
   current_question_id: 1, # Set the desired current question ID for this user
   phase: 1,
   vip: 1,
-  personal_message_us: "You are so sexy"
+  personal_message_us: "You are so sexy",
+  is_admin: true,
 )
 
 User.create!(
