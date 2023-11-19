@@ -32,21 +32,21 @@ class PagesController < ApplicationController
     end
 
     def travel
-    @markers = [
+        @markers = [
         {
-            lat: 51.22171975794381,  # Replace with the actual latitude for the first location
-            lng: 6.034021646755081, # Replace with the actual longitude for the first location
-            info_window_html: '<p>Marker 1 Info</p>',
-            image_name: 'castle1.png' # Optional
+            lat: 51.22171975794381,
+            lng: 6.034021646755081,
+            info_window_html: "<div class='info-content'><h4>Hillenraederlaan 12</h4><p>6071 NH Swalmen</p><img class='info-window-image' src='#{helpers.asset_path('hillenraad.jpg')}' alt='Castle'></div>",
+            image_name: 'castle1.png'
         },
         {
             lat:  51.224902127274056,  # Replace with the actual latitude for the second location
             lng: 6.012510887934105, # Replace with the actual longitude for the second location
-            info_window_html: '<p>Marker 2 Info</p>',
+            info_window_html: "<div class='info-content'><h4>Pastoor Pinckersstraat 26A</h4><p>6073 NW Swalmen</p><img class='info-window-image' src='#{helpers.asset_path('asselt_kerk.jpg')}' alt='Castle'></div>",
             image_name: 'church1.png' # Optional
 
         }
-]
+    ]
     end
 
 

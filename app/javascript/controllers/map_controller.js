@@ -1,3 +1,4 @@
+
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
@@ -17,10 +18,12 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       // Create an img element for the custom marker
       const el = document.createElement('div');
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       el.className = 'marker';
       el.style.backgroundImage = `url('${marker.image_url}')`;
       el.style.width = '50px';
@@ -30,6 +33,7 @@ export default class extends Controller {
       // Create the marker with the custom icon
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
         .addTo(this.map)
     })
   }
@@ -37,7 +41,6 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
   
-    // Add your existing markers
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
   
     // Coordinates for Amsterdam and Brussels
@@ -47,7 +50,29 @@ export default class extends Controller {
     // Extend bounds to include Amsterdam and Brussels
     bounds.extend(amsterdam);
     bounds.extend(brussels);
-  
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+
+    // After fitting to bounds, fly to the first marker
+    this.#flyToFirstMarker();
   }
+
+  #flyToFirstMarker() {
+  if (this.markersValue.length > 1) {
+    const bounds = new mapboxgl.LngLatBounds();
+    bounds.extend([this.markersValue[0].lng, this.markersValue[0].lat]);
+    bounds.extend([this.markersValue[1].lng, this.markersValue[1].lat]);
+
+    const isMobile = window.innerWidth <= 767; // Check if it's a mobile device
+    const paddingValue = isMobile ? 50 : {top: 300, bottom:300, left: 150, right: 150}; // Smaller padding for mobile
+
+    setTimeout(() => {
+      this.map.fitBounds(bounds, {
+        padding: paddingValue,
+        maxZoom: 15,
+        duration: 9000,
+        easing: (t) => t
+      });
+    }, 1000);
+  }
+}
 }

@@ -89,6 +89,25 @@
   .btn-primary:active {
       background-color: 3e2d2b !important; /* Replace with the green color you want */
   }
+
+  .flash {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.flash.alert {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.flash.notice {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  color: #0c5460;
+}
   
   @media screen and (max-width: 768px) {
     .container-fluid {
@@ -102,7 +121,9 @@
 </style>
 </head>
 <body>
-
+<% flash.each do |key, value| %>
+  <div class="flash <%= key %>"><%= value %></div>
+<% end %>
 <div class="container-fluid">
   <div class="backdrop">
     <div class="announcement-text">

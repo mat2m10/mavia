@@ -24,4 +24,13 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def create
+    # authentication code...
+    if authentication_failed
+      flash[:alert] = 'Invalid email or password.'
+      redirect_to new_session_path
+    else
+      # successful login code...
+    end
+  end
 end

@@ -31,6 +31,34 @@
   border-radius: 20px;
 }
 
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  font-size: 14px; /* Adjust the font size */
+  color: #333; /* Dark font color for better readability */
+}
+
+.mapboxgl-popup-content h4 {
+  font-size: 16px; /* Slightly larger font size for titles */
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.mapboxgl-popup-content {
+  padding: 15px;
+  border: 1px solid #ddd; /* Light grey border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  background-color: #fff; /* White background for contrast */
+  border-radius: 5px; /* Soften the edges */
+}
+
+.info-content .info-window-image {
+  width: 100%;        /* Image takes the full width of the container */
+  height: auto;       /* Height adjusts automatically */
+  border-radius: 4px; /* Optional: rounded corners */
+}
 /* CSS Media Query for smaller screens (e.g., phones) */
 @media screen and (max-width: 767px) {
   .travelpage {
@@ -40,24 +68,40 @@
   .subtravelpage1,
   .subtravelpage2 {
     width: 100%; /* Ensure full width */
-    height: auto; /* Adjust height automatically */
-    aspect-ratio: 16 / 9; /* Common aspect ratio, adjust as needed */
-    margin: 0rem; /* Add margin around the container */
+    margin: 0rem 0rem; /* Adjusted margin around the container */
   }
 
-  .map-container {
-    height: 100%; /* Use 100% of the parent's height */
-  }
-
-  /* Adjust carousel item and image size */
   .carousel-inner, .carousel-item {
-    height: 100%; /* Ensure full height */
+    height: auto; /* Adjust height automatically */
+    max-height: 50vh; /* New: Set a max height for the carousel */
+    margin: 1rem 0rem; /* Adjusted margin around the container */
+
   }
 
   .carousel-item img {
     width: 100%; /* Ensure full width */
     height: auto; /* Adjust height automatically */
-    object-fit: contain; /* Adjust the image to fit within the container */
+    object-fit: cover; /* Cover the area without stretching */
+  }
+
+  .map-container {
+    height: 80vh; /* New: Set a defined height for the map */
+    width: 100%; /* Ensure full width */
+    margin: 0; /* Remove weird margin */
+  }
+
+  .mapboxgl-popup {
+    max-width: 150px; /* Smaller max width */
+  }
+
+  .mapboxgl-popup-content {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  /* Optional: Adjust the popup's offset if needed */
+  .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    margin-left: -15px; /* Adjust according to your layout */
   }
 }
 </style>
