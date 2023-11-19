@@ -27,7 +27,7 @@
 .thank-you-message {
     background-color: #C8DCFF;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 2rem 0;
     border-radius: 20px;
     min-height: 700px; /* Set a minimum height to ensure it doesn't shrink */
     flex: 1;
@@ -87,6 +87,36 @@
   .btn-primary:active {
       background-color: #3e2d2b !important; /* Replace with the green color you want */
   }
+
+@media screen and (max-width: 768px) {
+  .homepage {
+    flex-direction: column;
+  }
+
+  .subhomepage1 {
+    /* Adjust the size of the background image */
+    background-size: cover;
+    /* Adjust the position of the background image if needed */
+    background-position: center;
+    /* Set a minimum height if the div is too short */
+    min-height: 400px; /* Adjust as needed */
+  }
+  .subhomepage2 {
+    /* Adjust the size of the background image */
+    background-size: cover;
+    /* Adjust the position of the background image if needed */
+    background-position: center;
+    /* Set a minimum height if the div is too short */
+    min-height: 400px; /* Adjust as needed */
+    
+    padding: 1rem;
+  }
+
+  /* Adjust margins and paddings for other elements if needed */
+  .subhomepage1, .subhomepage2, .thank-you-message {
+    margin: 1rem 1rem; /* Adjust according to your design */
+  }
+}
 </style>
 
 <% @phase = current_user&.phase || 1 %>

@@ -4,15 +4,43 @@
   color: #000000; /* or #333333 for dark gray text */
   font-weight: bold;
 }
+
+.nav-item2 {
+  padding: 0 40px;
+}
 body {
   background-color: #b3d1ff;
 }
 
+@media screen and (max-width: 576px) {
+  nav.navbar.navbar-expand-sm.navbar-light .navbar-nav .nav-item {
+    margin: 0px;
+    padding: 5px; /* Adjusted */
+  }
+
+  nav.navbar.navbar-expand-sm.navbar-light .navbar-nav .nav-link {
+    font-size: smaller; /* Adjusted */
+    padding: 0px; /* Adjusted */
+  }
+
+  nav.navbar.navbar-expand-sm.navbar-light .navbar-toggler {
+    /* Styles for the toggle button */
+  }
+
+  nav.navbar.navbar-expand-sm.navbar-light .navbar-toggler-icon {
+    /* Styles for the toggle icon */
+  }
+}
 </style>
 
-<% if @phase == 1%>
+<% if @phase == 1 %>
 <nav class="navbar navbar-expand-sm navbar-light">
   <div class="container-fluid">
+
+    <!-- Navbar Toggler Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
       <ul class="navbar-nav w-100">
@@ -20,14 +48,12 @@ body {
           <li class="nav-item mr-auto">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          </li>          
-          <li class="nav-item mr-auto" style="padding: 0 40px;">
+          <li class="nav-item2 mr-auto">
             <%= link_to "Where is this thing happening?", travel_path, class: "nav-link" %>
           </li>
           <li class="nav-item mx-auto">
             <%= link_to "", svtd_path, class: "nav-link"%>
           </li>
-
           <li class="nav-item ml-auto">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
@@ -37,8 +63,7 @@ body {
 
   </div>
 </nav>
-
-<%end%>
+<% end %>
 <%if @phase ==2%>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
@@ -121,3 +146,4 @@ body {
   </div>
 </nav>
 <%end%>
+

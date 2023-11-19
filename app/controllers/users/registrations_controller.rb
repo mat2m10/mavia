@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
   before_action :authenticate_user_for_hidden_and_seating, only: [:hidden, :seating]
+  before_action :check_admin, only: [:hidden]
   # GET /resource/sign_up
   # def new
   #   super
@@ -91,6 +92,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def authenticate_user_for_hidden_and_seating
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  
+  def check_admin
+    unless current_user&.is_admin
+      flash[:error] = 'You do not have permission to access this page.'
+      redirect_to root_path
+    end
   end
 
   def user_params
