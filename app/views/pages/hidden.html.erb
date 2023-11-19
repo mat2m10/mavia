@@ -1,3 +1,15 @@
+<style>
+.custom-badge {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.badge-margin {
+    margin: 5px; /* Adjust the value as needed */
+}
+</style>
+
 <%= render "shared/navbar" %>
 <div class="container">
     <!-- Registration Form Section -->
@@ -63,6 +75,7 @@
         <th>Name</th>
         <th>Role</th>
         <th>Action</th>
+        <th>Answered</th>
       </tr>
     </thead>
     <tbody>
@@ -77,7 +90,12 @@
                   Toggle
                 </button>
               </td>
-            </tr>
+              <td>
+                <!-- Display 'Has Answered' if the address is not empty -->
+                <% if user.address.present? %>
+                  <span class="custom-badge badge-margin">Answered</span>
+                <% end %>
+              </td>
             <tr id="editForm<%= user.id %>" style="display:none;">
               <td colspan="4">
               <%= simple_form_for(user, url: registration_path(user), method: :patch) do |f| %>
@@ -94,6 +112,54 @@
                 <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control" } %>
               </div>
               
+              <div class="form-group">
+                <%= f.label :family_name, 'Family name' %>
+                <%= f.input :family_name, required: true, label: false, input_html: { value: user.family_name, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :address, 'Adress' %>
+                <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control" } %>
+              </div>
+              <div class="form-group">
+                <%= f.label :country, 'country' %>
+                <%= f.input :country, required: true, label: false, input_html: { value: user.country, class: "form-control" } %>
+              </div>
+              
+              <div class="form-group">
+                <%= f.label :city, 'city' %>
+                <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :apartment, 'apartment' %>
+                <%= f.input :apartment, required: true, label: false, input_html: { value: user.apartment, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :postal_code, 'postal_code' %>
+                <%= f.input :postal_code, required: true, label: false, input_html: { value: user.postal_code, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :personal_message_us, 'Our personnal message' %>
+                <%= f.input :personal_message_us, required: true, label: false, input_html: { value: user.personal_message_us, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :personal_message_them, 'Their personnal message' %>
+                <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :vip, 'vip' %>
+                <%= f.input :vip, required: true, label: false, input_html: { value: user.vip, class: "form-control" } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :phase, 'phase' %>
+                <%= f.input :phase, required: true, label: false, input_html: { value: user.phase, class: "form-control" } %>
+              </div>
 
               <div class="form-group">
                 <%= f.label :is_admin, 'Role' %>
