@@ -70,18 +70,16 @@
     width: 100%; /* Ensure full width */
     margin: 0rem 0rem; /* Adjusted margin around the container */
   }
-
   .carousel-inner, .carousel-item {
-    height: auto; /* Adjust height automatically */
-    max-height: 50vh; /* New: Set a max height for the carousel */
-    margin: 1rem 0rem; /* Adjusted margin around the container */
-
+    height: auto; /* Keep the height adjustment as is */
+    max-height: 50vh; /* Keep the max-height but you might need to adjust this based on your layout and image sizes */
+    margin: 0; /* Optional: Adjust the margin if needed for better layout */
   }
 
   .carousel-item img {
-    width: 100%; /* Ensure full width */
-    height: auto; /* Adjust height automatically */
-    object-fit: cover; /* Cover the area without stretching */
+    width: 100%; /* Keep the full width */
+    height: auto; /* Keep height auto for responsive adjustment */
+    object-fit: contain; /* Change from 'cover' to 'contain' to avoid cropping */
   }
 
   .map-container {
