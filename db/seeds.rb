@@ -658,13 +658,476 @@ User.create!(
   vip: 2,
   personal_message_us: "Viennsss"
 )
-# Create Harold without admin privileges
+
+
 User.create!(
-  email: 'ami@dg.com',
-  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
-  name: 'Amelie',
+  email: 'laurent.michiels@bain.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Slice',
   current_question_id: 1, # Set the desired current question ID for this user
-  phase: 2
+  phase: 1,
+  vip: 2,
+  personal_message_us: ""
+)
+
+User.create!(
+  email: 'louise@snoy.net',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Loulou',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: ""
+)
+
+User.create!(
+  email: 'harold.delacroix@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Crackold',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "la pire"
+)
+
+User.create!(
+  email: 'sophiedelacroix@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Sophh',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Ramenes toiii"
+)
+
+User.create!(
+  email: 'darrenmk1@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Darren',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: ""
+)
+
+User.create!(
+  email: 'laurawaldersee@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Lauraa',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Comeeee it wil be funn"
+)
+
+User.create!(
+  email: 'poli.camilla@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Camilla',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Vienss"
+)
+
+User.create!(
+  email: 'ipn@vub.de',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Isabell',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "request from you TA, come!"
+)
+
+User.create!(
+  email: 'tom.cassells14@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Tom',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Jij moet komen"
+)
+
+User.create!(
+  email: 'lotti.von.quadt@student.uva.nl',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Lotti',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Commeeee"
+)
+
+User.create!(
+  email: 'theresaisabelkruse@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Theresa',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Partayyy"
+)
+
+User.create!(
+  email: 'javi.stauffenberg@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Javi',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viens on va se marrer"
+)
+
+User.create!(
+  email: 'carolinewvh@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Caroww',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Je moet komenn"
+)
+
+User.create!(
+  email: 'leonore.vehmeijer@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Leo',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "We gaan lachen"
+)
+
+User.create!(
+  email: 'guillaume.doultremont@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Guix',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Whouhouww teuf"
+)
+
+User.create!(
+  email: 'charko.doultremont@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Charko',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viens on va se marrer!"
+)
+
+User.create!(
+  email: 'amvaneden@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Arthur',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Feest"
+)
+
+User.create!(
+  email: 'tuanabukemyildiz@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Tuanaa',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Comeee it will be funnn"
+)
+
+User.create!(
+  email: 'cldursel@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Clarinette',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viensss ca va etre chouette"
+)
+
+User.create!(
+  email: 'carolinedemontjoye@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Roca',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Ramenees toii"
+)
+
+User.create!(
+  email: 'sebastiendebriey@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Sebastien',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viens!"
+)
+
+User.create!(
+  email: 'fvanlitsenburg@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Felix',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Kom we gaan lachen"
+)
+
+User.create!(
+  email: 'augustinvde@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Guss',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Ramene toi grosse merde"
+)
+
+User.create!(
+  email: 'diego.vdp24@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Dieg',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Ramene toi on va se marrer"
+)
+
+User.create!(
+  email: 'nicolasgodart@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Godart',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Teufff"
+)
+
+User.create!(
+  email: 'alexis.latinis@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Boursi',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "On a trop de meufs celib"
+)
+
+User.create!(
+  email: 'stijn.riviere@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Stijn',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viens grosse merde"
+)
+
+User.create!(
+  email: 'alinefadie@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Aline',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Whouhouuw partyy"
+)
+
+User.create!(
+  email: 'celestinedec@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Titinne',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viennss"
+)
+
+User.create!(
+  email: 'ch.starckmann@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Starck',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Viens on va se marrer"
+)
+
+User.create!(
+  email: 'clausscamille@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Camille',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Whouhouuww"
+)
+
+User.create!(
+  email: 'pdormesson@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Pierre',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Vienss"
+)
+
+User.create!(
+  email: 'denicolaytatiana@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Tatouuu',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Ca va etre marrant"
+)
+
+User.create!(
+  email: 'adefoestraets@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Arny',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Vienss"
+)
+
+User.create!(
+  email: 'isauredv@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Isaure',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: ""
+)
+
+User.create!(
+  email: 'toutia.daryoush@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Toutia',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Partyyyy"
+)
+
+User.create!(
+  email: 'freedom-22@hotmail.co.uk',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Free',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Whouhouuuww"
+)
+
+User.create!(
+  email: 'chatelainpaul@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'le poulpe',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "On a trop de meufs celib viens"
+)
+
+User.create!(
+  email: 'maddejamb@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Mad',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Ramenes toi!"
+)
+
+User.create!(
+  email: 'alexdehemptinne90@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Lolo',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Viens vieux sgeg"
+)
+
+User.create!(
+  email: 'amelie.thibautdem@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Amee',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "whouhouuw"
+)
+
+User.create!(
+  email: 'ali@digitalpark.be',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Ali',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "superbe site web non?"
+)
+
+User.create!(
+  email: 'laure.w@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Laure',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "Whouhouuw"
+)
+
+User.create!(
+  email: 'sam.rz@hotmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Sam',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: "Viennss"
+)
+
+User.create!(
+  email: 'camille.testard@protonmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Camille',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 2,
+  personal_message_us: ""
+)
+
+User.create!(
+  email: 'dehemptinneb@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Papa',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: "viens ca va etre marrant"
+)
+
+User.create!(
+  email: 'azinedeh@gmail.com',
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Mams',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 1,
+  vip: 1,
+  personal_message_us: ""
 )
 """
 User.create!(
@@ -677,5 +1140,12 @@ User.create!(
   personal_message_us: ""
 )
 """
-
+# Create Harold without admin privileges
+User.create!(
+  email: 'ami@dg.com',
+  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  name: 'Amelie',
+  current_question_id: 1, # Set the desired current question ID for this user
+  phase: 2
+)
 puts 'Seeds created successfully!'
