@@ -4,32 +4,30 @@
     background-color: #b3d1ff;
   }
 
-  .subtravelpage1 {
+  .subtravelpage1,
+  .subtravelpage2 {
     flex: 1;
-    height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .subtravelpage1 {
     margin: 2rem;
     box-sizing: border-box;
     border-radius: 20px;
   }
 
   .subtravelpage2 {
-    flex: 1;
-    display: flex;
-    align-items: center; /* Align items vertically */
     padding: 2rem;
+    border-radius: 20px;
     background-color: #b3d1ff;
   }
 
   .map-container {
-    background: #C8DCFF;
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: 8px;
-    width: 80%; /* Limit the width of the container */
-    max-width: 600px; /* Set a max-width if needed */
-    margin: auto; /* Center the container */
+    width: 100%; /* Set the map container width to 100% */
+    height: 100%;
+    border-radius: 20px; /* Apply border-radius to the map container */
   }
-
 
   /* Add other styles as needed to match the mockup */
 </style>
@@ -42,10 +40,10 @@
       <!-- Bootstrap Carousel -->
       <div id="ci" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="1000">
+          <div class="carousel-item active" data-bs-interval="10000">
             <%= image_tag('liv.png', class: 'd-block w-100', alt: 'First slide', style: "border-radius: 20px;") %>
           </div>
-          <div class="carousel-item" data-bs-interval="1000">
+          <div class="carousel-item" data-bs-interval="10000">
             <%= image_tag('math.png', class: 'd-block w-100', alt: 'Second slide', style: "border-radius: 20px;") %>
           </div>
         </div>
@@ -53,14 +51,13 @@
       </div>
     </div>
     <div class="subtravelpage2">
-      <div class="map-container">
-    <!-- Display the "thank you" message -->
-          <div class="map text-center", style="width: 100%; height: 600px;"
-                data-controller="map"
-                data-map-markers-value="<%= @markers.to_json %>"
-                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-          </div>
+      <!-- Display the "thank you" message -->
+      <div id="travel_map" class="map-container">
+        <div class="map text-center" style="width: 100%; height: 100%; border-radius:20px;"
+          data-controller="map"
+          data-map-markers-value='<%= @markers.map { |marker| marker.merge(image_url: asset_path(marker[:image_name])) }.to_json %>'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
     </div>
   </div>

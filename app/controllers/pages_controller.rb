@@ -34,14 +34,17 @@ class PagesController < ApplicationController
     def travel
     @markers = [
         {
-            lat: 40.7128,  # Replace with the actual latitude for the first location
-            lng: -74.0060, # Replace with the actual longitude for the first location
-            info_window_html: '<p>Marker 1 Info</p>' # Optional
+            lat: 51.22171975794381,  # Replace with the actual latitude for the first location
+            lng: 6.034021646755081, # Replace with the actual longitude for the first location
+            info_window_html: '<p>Marker 1 Info</p>',
+            image_name: 'castle1.png' # Optional
         },
         {
-            lat: 34.0522,  # Replace with the actual latitude for the second location
-            lng: -118.2437, # Replace with the actual longitude for the second location
-            info_window_html: '<p>Marker 2 Info</p>' # Optional
+            lat:  51.224902127274056,  # Replace with the actual latitude for the second location
+            lng: 6.012510887934105, # Replace with the actual longitude for the second location
+            info_window_html: '<p>Marker 2 Info</p>',
+            image_name: 'church1.png' # Optional
+
         }
 ]
     end
