@@ -44,7 +44,7 @@ class PagesController < ApplicationController
         {
             lat:  51.22481236270391,  # Replace with the actual latitude for the second location
             lng: 6.011571136763254, # Replace with the actual longitude for the second location
-            info_window_html: "<div class='info-content'><h4><a href='https://maps.app.goo.gl/pszfk96io1ZHgqYc6'>Pastoor Pinckersstraat 26A</a></h4><p>6073 NW Swalmen</p><img class='info-window-image' src='#{helpers.asset_path('asselt_kerk.jpg')}' alt='Castle'></div>",
+            info_window_html: "<div class='info-content'><h4><a href='https://maps.app.goo.gl/UfHZNg5pYWnEUGTH6'>Pastoor Pinckersstraat 26A</a></h4><p>6073 NW Swalmen</p><img class='info-window-image' src='#{helpers.asset_path('asselt_kerk.jpg')}' alt='Castle'></div>",
             image_name: 'church1.png',
             url: "https://maps.app.goo.gl/UfHZNg5pYWnEUGTH6"
 
