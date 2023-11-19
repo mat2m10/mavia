@@ -41,6 +41,7 @@ Question.create!(
 
 
 
+
 matthieu = User.create!(
   email: 'mat@dh.com',
   password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
