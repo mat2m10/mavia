@@ -120,6 +120,7 @@
 </style>
 
 <% @phase = current_user&.phase || 1 %>
+<%= render "shared/navbar" %>
 
 <% if @phase == 1 %>
   <div class="homepage">

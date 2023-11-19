@@ -89,6 +89,15 @@
   .btn-primary:active {
       background-color: 3e2d2b !important; /* Replace with the green color you want */
   }
+  @media screen and (max-width: 768px) {
+    .container-fluid {
+      width: 100%; /* Make it full-width under 768px */
+      margin: 0; /* Remove margins */
+    }
+    .backdrop {
+      padding: 80px; /* Reduce padding for smaller screens */
+    }
+  }
 </style>
 </head>
 <body>
