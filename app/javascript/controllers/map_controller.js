@@ -9,6 +9,8 @@ export default class extends Controller {
   }
 
   connect() {
+
+
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
