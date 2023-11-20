@@ -11,9 +11,18 @@
     display: flex;
     align-items: center;
   }
+  .highlight-date {
+      font-weight: bold; /* Ensures the text is bold */
+      color: #6B2527; /* Example: sets the color to red */
+      /* Add other styling properties as needed */
+  }
+
+  .highlight-date:hover {
+    color: #ce7c3f;
+  }
 
   .subhomepage1 {
-    background: url('<%= asset_url('us.jpg') %>') center/cover no-repeat;
+    background: url('<%= asset_url('us3.jpg') %>') center/cover no-repeat;
     margin: 2rem;
     box-sizing: border-box;
     border-radius: 20px;
@@ -140,9 +149,9 @@
             <h1>Hello my dear <%= @current_user.name %>!</h1>
             <h2><%= @current_user.personal_message_us %></h2>
             <% if  @current_user.vip == 2%>
-              <h2>Save the 25th of May in your agenda to celebrate our bond with us!</h2>
+              <h2>Save the <strong class="highlight-date">25th of May</strong> in your agenda to celebrate our bond with us!</h2>
             <% else %>
-              <h2>Save the 24th & 25th of May in your agenda!</h2>
+              <h2>Save the <strong class="highlight-date">24th & 25th of May</strong> in your agenda!</h2>
             <% end%>
           </div>
           <div class="savethedateform">
