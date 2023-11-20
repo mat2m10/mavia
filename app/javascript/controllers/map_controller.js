@@ -65,7 +65,7 @@ export default class extends Controller {
     bounds.extend([this.markersValue[1].lng, this.markersValue[1].lat]);
 
     const isMobile = window.innerWidth <= 767; // Check if it's a mobile device
-    const paddingValue = isMobile ? 50 : {top: 300, bottom:300, left: 150, right: 150}; // Smaller padding for mobile
+    const paddingValue = isMobile ? 50 : {top: 150, bottom:150, left: 150, right: 150}; // Smaller padding for mobile
 
     setTimeout(() => {
       this.map.fitBounds(bounds, {
