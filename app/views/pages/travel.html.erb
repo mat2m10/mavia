@@ -71,15 +71,17 @@
     margin: 0rem 0rem; /* Adjusted margin around the container */
   }
   .carousel-inner, .carousel-item {
-    height: auto; /* Keep the height adjustment as is */
-    max-height: 50vh; /* Keep the max-height but you might need to adjust this based on your layout and image sizes */
-    margin: 0; /* Optional: Adjust the margin if needed for better layout */
+    max-height: 80vh; /* Keep the max-height but you might need to adjust this based on your layout and image sizes */
+    width: 100%; /* Ensure full width */
+    margin: 0px; /* Optional: Adjust the margin if needed for better layout */
   }
 
   .carousel-item img {
     width: 100%; /* Keep the full width */
     height: auto; /* Keep height auto for responsive adjustment */
     object-fit: contain; /* Change from 'cover' to 'contain' to avoid cropping */
+    margin: 2px; /* Adjust according to your layout */
+
   }
 
   .map-container {
@@ -101,6 +103,22 @@
   .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
     margin-left: -15px; /* Adjust according to your layout */
   }
+
+  .carousel-inner .carousel-item {
+  transition: transform 0s ease; /* Adjust the duration and easing as needed */
+}
+
+/* Translate the slides horizontally for a slide-in effect */
+.carousel-item.active {
+  transform: translateX(0%);
+}
+.carousel-item-next {
+  transform: translateX(100%);
+}
+.carousel-item-prev {
+  transform: translateX(-100%);
+}
+
 }
 </style>
 <%= javascript_include_tag 'refresh' %>
@@ -113,10 +131,10 @@
       <div id="ci" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="5000">
-            <%= image_tag('liv.png', class: 'd-block w-100', alt: 'First slide', style: "border-radius: 20px;") %>
+            <%= image_tag('liv.png', class: 'd-block w-100', alt: 'First slide', style: "border-radius: 20px; margin:2px;") %>
           </div>
           <div class="carousel-item" data-bs-interval="5000">
-            <%= image_tag('math.png', class: 'd-block w-100', alt: 'Second slide', style: "border-radius: 20px;") %>
+            <%= image_tag('math.png', class: 'd-block w-100', alt: 'Second slide', style: "border-radius: 20px; margin:2px") %>
           </div>
         </div>
         <!-- Previous Button -->
