@@ -82,6 +82,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to seating_path
   end
 
+  def reset_question
+    user = User.find(params[:id])
+    user.update(current_question_id: 1)
+    redirect_back(fallback_location: hidden_path, notice: 'Question reset to 1.')
+  end
+  
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     sign_out(resource)

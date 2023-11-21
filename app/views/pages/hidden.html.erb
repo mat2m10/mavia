@@ -55,6 +55,8 @@
             <%= f.label :is_admin, class: "form-check-label" %>
           </div>
 
+
+
           <div class="form-group mt-3">
             <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
           </div>
@@ -79,108 +81,107 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
-            <tr>
-              <td><%= user.email %></td>
-              <td><%= user.name %></td>
-              <td><%= user.is_admin ? 'Admin' : 'User' %></td>
-              <td>
-                <!-- Toggle Edit Form Button -->
-                <button onclick="toggleEditForm(<%= user.id %>)" type="button" class="btn btn-primary">
-                  Toggle
-                </button>
-              </td>
-              <td>
-                <!-- Display 'Has Answered' if the address is not empty -->
-                <% if user.address.present? %>
-                  <span class="custom-badge badge-margin">Answered</span>
-                <% end %>
-              </td>
-            <tr id="editForm<%= user.id %>" style="display:none;">
-              <td colspan="4">
-              <%= simple_form_for(user, url: registration_path(user), method: :patch) do |f| %>
-              <div class="form-group">
-                <%= f.label :email, 'Email' %>
-                <%= f.input :email, required: true, label: false, input_html: { value: user.email, class: "form-control" } %>
-              </div>
-              <div class="form-group">
-                <%= f.label :title, 'Title' %>
-                <%= f.input :title, required: true, label: false, input_html: { value: user.title, class: "form-control" } %>
-              </div>
-              <div class="form-group">
-                <%= f.label :name, 'Name' %>
-                <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control" } %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :family_name, 'Family name' %>
-                <%= f.input :family_name, required: true, label: false, input_html: { value: user.family_name, class: "form-control" } %>
-              </div>
+   <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%= user.is_admin ? 'Admin' : 'User' %></td>
+      <td>
+      <!-- Toggle Edit Form Button -->
+        <button onclick="toggleEditForm(<%= user.id %>)" type="button" class="btn btn-primary">
+        Toggle
+        </button>
+        <!-- Reset Question Button -->
+        <%= form_with url: reset_question_path(user), method: :patch do %>
+          <%= submit_tag 'Reset Question', class: 'btn btn-warning' %>
+        <% end %>
+      </td>
+      <td>
+        <!-- Display 'Has Answered' if the address is not empty -->
+        <% if user.address.present? %>
+          <span class="custom-badge badge-margin">Answered</span>
+        <% end %>
+      </td>
+    </tr>
+    <tr id="editForm<%= user.id %>" style="display:none;">
+      <td colspan="5">
+      <%= simple_form_for(user, url: registration_path(user), method: :patch) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, 'Email' %>
+          <%= f.input :email, required: true, label: false, input_html: { value: user.email, class: "form-control" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, 'Title' %>
+          <%= f.input :title, required: true, label: false, input_html: { value: user.title, class: "form-control" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name, 'Name' %>
+          <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control" } %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :family_name, 'Family name' %>
+          <%= f.input :family_name, required: true, label: false, input_html: { value: user.family_name, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :address, 'Adress' %>
-                <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :address, 'Adress' %>
+          <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control" } %>
+        </div>
 
 
-              <div class="form-group">
-                <%= f.label :pays, 'Country' %>
-                <%= f.input :pays, required: true, label: false, input_html: { value: user.pays, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :pays, 'Country' %>
+          <%= f.input :pays, required: true, label: false, input_html: { value: user.pays, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :city, 'City' %>
-                <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :city, 'City' %>
+          <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :apartment, 'apartment' %>
-                <%= f.input :apartment, required: true, label: false, input_html: { value: user.apartment, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :apartment, 'apartment' %>
+          <%= f.input :apartment, required: true, label: false, input_html: { value: user.apartment, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :postal_code, 'postal_code' %>
-                <%= f.input :postal_code, required: true, label: false, input_html: { value: user.postal_code, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :postal_code, 'postal_code' %>
+          <%= f.input :postal_code, required: true, label: false, input_html: { value: user.postal_code, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :personal_message_us, 'Our personnal message' %>
-                <%= f.input :personal_message_us, required: true, label: false, input_html: { value: user.personal_message_us, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :personal_message_us, 'Our personnal message' %>
+          <%= f.input :personal_message_us, required: true, label: false, input_html: { value: user.personal_message_us, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :personal_message_them, 'Their personnal message' %>
-                <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :personal_message_them, 'Their personnal message' %>
+          <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :vip, 'vip' %>
-                <%= f.input :vip, required: true, label: false, input_html: { value: user.vip, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :vip, 'vip' %>
+          <%= f.input :vip, required: true, label: false, input_html: { value: user.vip, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :phase, 'phase' %>
-                <%= f.input :phase, required: true, label: false, input_html: { value: user.phase, class: "form-control" } %>
-              </div>
+        <div class="form-group">
+          <%= f.label :phase, 'phase' %>
+          <%= f.input :phase, required: true, label: false, input_html: { value: user.phase, class: "form-control" } %>
+        </div>
 
-              <div class="form-group">
-                <%= f.label :is_admin, 'Role' %>
-                <%= f.select :is_admin, [['Admin', true], ['User', false]], selected: user.is_admin, include_blank: false, label: false, class: "form-control" %>
-              </div>
+        <div class="form-group">
+          <%= f.label :is_admin, 'Role' %>
+          <%= f.select :is_admin, [['Admin', true], ['User', false]], selected: user.is_admin, include_blank: false, label: false, class: "form-control" %>
+        </div>
 
-              <div class="form-group mt-3">
-                <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+          <div class="form-group mt-3">
+            <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+    </td>
+  </tr>
+<% end %>
 
 <script>
   function toggleEditForm(userId) {

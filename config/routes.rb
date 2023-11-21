@@ -31,5 +31,7 @@ Rails.application.routes.draw do
     post 'hidden', to: 'users/registrations#hidden'
     get 'reset_submission', to: 'users/registrations#reset_submission', as: 'reset_submission'
     patch 'users/:id', to: 'users/registrations#update2', as: :registration
+    patch 'users/:id/reset_question', to: 'users/registrations#reset_question', as: :reset_question
+
   end
 end
