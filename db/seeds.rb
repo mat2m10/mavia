@@ -1,38 +1,30 @@
 Question.create!(
   question_text: 'Salt or Paprika',
-  option_1: 'salt',
-  option_2: 'paprika'
+  questions: ['01_salt','01_paprika']
 )
 
 Question.create!(
-  question_text: 'Hot or Cold',
-  option_1: 'hot',
-  option_2: 'cold'
+  question_text: 'Which pokemon',
+  questions: ['02_charmander','02_squirtle','02_bulbasaur']
 )
 
 Question.create!(
-  question_text: 'Cat or Dog',
-  option_1: 'cat',
-  option_2: 'dog'
+  question_text: 'Which hogwarts house',
+  questions: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin']
 )
 
 Question.create!(
-  question_text: 'Burger or Pizza',
-  option_1: 'burger',
-  option_2: 'pizza'
+  question_text: 'Where would you rather be friday evening',
+  questions: ['04_browncafe','04_clubbing','04_tabletop']
 )
-
 # Add more questions as needed
 Question.create!(
-  question_text: 'Whisky or Gin',
-  option_1: 'whisky',
-  option_2: 'gin'
+  question_text: 'What do you prefer?',
+  questions: ['whisky','gin']
 )
-
 Question.create!(
-  question_text: 'The end',
-  option_1: 'Nan',
-  option_2: 'Nan'
+  question_text: 'the end',
+  questions: ['NaN','NaN']
 )
 
 # Add 11 more questions with similar structure
