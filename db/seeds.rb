@@ -1,30 +1,30 @@
 Question.create!(
   question_text: 'Salt or Paprika',
-  questions: ['01_salt','01_paprika']
+  options: ['01_salt','01_paprika']
 )
 
 Question.create!(
   question_text: 'Which pokemon',
-  questions: ['02_charmander','02_squirtle','02_bulbasaur']
+  options: ['02_charmander','02_squirtle','02_bulbasaur']
 )
 
 Question.create!(
   question_text: 'Which hogwarts house',
-  questions: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin']
+  options: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin']
 )
 
 Question.create!(
   question_text: 'Where would you rather be friday evening',
-  questions: ['04_browncafe','04_clubbing','04_tabletop']
+  options: ['04_browncafe','04_clubbing','04_tabletop']
 )
 # Add more questions as needed
 Question.create!(
   question_text: 'What do you prefer?',
-  questions: ['whisky','gin']
+  options: ['whisky','gin']
 )
 Question.create!(
   question_text: 'the end',
-  questions: ['NaN','NaN']
+  options: ['NaN','NaN']
 )
 
 # Add 11 more questions with similar structure
@@ -1934,6 +1934,7 @@ User.create!(
   password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Amelie',
   current_question_id: 1, # Set the desired current question ID for this user
-  phase: 2
+  phase: 2,
+  is_admin: true
 )
 puts 'Seeds created successfully!'
