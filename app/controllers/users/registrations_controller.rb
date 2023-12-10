@@ -94,6 +94,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     new_user_registration_path
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to hidden_path, notice: 'User was successfully deleted.'
+  end
   private
 
   def authenticate_user_for_hidden_and_seating

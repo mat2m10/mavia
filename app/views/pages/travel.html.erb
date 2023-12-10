@@ -124,7 +124,7 @@
 <%= javascript_include_tag 'refresh' %>
 <% @phase = current_user&.phase || 1 %>
 <%= render "shared/navbar" %>
-<% if @phase == 1 %>
+<% if @phase == 1 || 2%>
   <div class="travelpage">
     <div class="subtravelpage1 w-100">
       <!-- Bootstrap Carousel -->

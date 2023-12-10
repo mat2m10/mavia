@@ -32,6 +32,6 @@ Rails.application.routes.draw do
     get 'reset_submission', to: 'users/registrations#reset_submission', as: 'reset_submission'
     patch 'users/:id', to: 'users/registrations#update2', as: :registration
     patch 'users/:id/reset_question', to: 'users/registrations#reset_question', as: :reset_question
-
+    delete 'users/:id', to: 'users/registrations#destroy', as: :user_registration_destroy
   end
 end
