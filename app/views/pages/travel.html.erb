@@ -152,8 +152,7 @@
     </div>
     <div class="subtravelpage2">
       <!-- Display the "thank you" message -->
-      <div id="travel_map" class="map-container">
-        <div class="map text-center" style="width: 100%; height: 100%; border-radius:20px;"
+      <div id="travel_map" class="map-container"><div class="map text-center" style="width: 100%; height: 100%; border-radius:20px;"
           data-controller="map"
           data-map-markers-value='<%= @markers.map { |marker| marker.merge(image_url: asset_path(marker[:image_name])) }.to_json %>'
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
