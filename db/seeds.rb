@@ -40,7 +40,7 @@ matthieu = User.create!(
   name: 'Matthieu',
   current_question_id: 1, # Set the desired current question ID for this user
   is_admin: true,
-  phase: 1,
+  phase: 2,
   vip: 1,
   personal_message_us: ""
 )
