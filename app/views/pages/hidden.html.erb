@@ -78,6 +78,9 @@
         <th>Email</th>
         <th>Name</th>
         <th>Role</th>
+        <th>Ceremony</th> <!-- New column header for Ceremony -->
+        <th>Friday</th> <!-- New column header for Friday -->
+        <th>Dietary Restriction</th>
         <th>Action</th>
         <th>Answered</th>
         <th>Reset Seating</th>
@@ -90,6 +93,9 @@
       <td><%= user.email %></td>
       <td><%= user.name %></td>
       <td><%= user.is_admin ? 'Admin' : 'User' %></td>
+      <td><%= user.ceremony %></td> <!-- New column for Ceremony -->
+      <td><%= user.friday %></td> <!-- New column for Friday -->
+      <td><%= user.dietary_restriction %></td>
       <td>
       <!-- Toggle Edit Form Button -->
         <button onclick="toggleEditForm(<%= user.id %>)" type="button" class="btn btn-primary">
@@ -173,9 +179,17 @@
           <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control" } %>
         </div>
 
+      <div class="form-group">
+          <%= f.label :ceremony, 'Ceremony' %>
+          <%= f.input :ceremony, label: false, input_html: { value: user.ceremony, class: "form-control" } %>
+        </div>
         <div class="form-group">
-          <%= f.label :vip, 'vip' %>
-          <%= f.input :vip, required: true, label: false, input_html: { value: user.vip, class: "form-control" } %>
+          <%= f.label :friday, 'Friday' %>
+          <%= f.input :friday, label: false, input_html: { value: user.friday, class: "form-control" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :dietary_restriction, 'Dietary Restriction' %>
+          <%= f.input :dietary_restriction, label: false, input_html: { value: user.dietary_restriction, class: "form-control" } %>
         </div>
 
         <div class="form-group">

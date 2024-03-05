@@ -211,8 +211,40 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 <%elsif @phase == 2 %>
- 
+ <%i = 0%>
+ <% if  current_user.friday == 'yes'%>
+  <div class="form-group">
+    you are invited on friday
+  </div>
+ <% end %>
+ <% if  current_user.ceremony == 'yes'%>
+   <div class="form-group">
+    you are invited at the ceremony
+  </div>
+ <% end %>
+   <div class="form-group">
+    you are invited at the cocktail
+  </div>
+  <div class="form-group">
+    you are invited at the dinner
+  </div>
 <% end %>
   
 

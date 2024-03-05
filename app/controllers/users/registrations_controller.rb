@@ -123,7 +123,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :seating_question_13, :seating_question_14, :seating_question_15,
       :current_question, :title, :current_question_id, :telephone_number,
       :family_name, :address, :address_nr, :pays, :city, :phase,
-      :apartment, :postal_code, :vip, :personal_message_us, :personal_message_them
+      :apartment, :postal_code, :vip, :personal_message_us, :personal_message_them, :friday, :ceremony, :dietary_restriction
     )
   end
 end

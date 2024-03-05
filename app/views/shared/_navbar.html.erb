@@ -96,22 +96,19 @@
       <ul class="navbar-nav w-100">
         <% if user_signed_in? %>
           <li class="nav-item mr-auto">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "The Wedding", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item mx-auto">
             <%= link_to "RSVP", rsvp_path, class: "nav-link" %>
           </li>          
           <li class="nav-item mx-auto">
-            <%= link_to "Travel Information", travel_path, class: "nav-link" %>
+            <%= link_to "Travel/Accommodation", travel_path, class: "nav-link" %>
           </li>
           <li class="nav-item mx-auto">
-            <%= link_to "Accommodation", accomodation_path, class: "nav-link" %>
+            <%= link_to "Gifts/Registry", gift_path, class: "nav-link" %>
           </li>
           <li class="nav-item mx-auto">
-            <%= link_to "Gifts", gift_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item mx-auto">
-            <%= link_to "Seatings", seating_path, class: "nav-link" %>
+            <%= link_to "Table Seatings", seating_path, class: "nav-link" %>
           </li>
           <li class="nav-item ml-auto">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
@@ -133,7 +130,7 @@
       <ul class="navbar-nav justify-content-between">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "The wedding", root_path, class: "nav-link" %>
           </li>
 
           <li>
