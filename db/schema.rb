@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_04_191824) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_09_173030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_191824) do
     t.string "friday", default: "no"
     t.string "ceremony", default: "no"
     t.string "dietary_restriction"
+    t.string "answer_friday", default: "no"
+    t.string "answer_ceremony", default: "no"
+    t.string "answer_reception", default: "no"
+    t.string "answer_diner", default: "no"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
