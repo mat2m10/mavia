@@ -126,6 +126,92 @@
     margin: 1rem 1rem; /* Adjust according to your design */
   }
 }
+
+.part_container {
+  display: flex;
+  flex-direction: column; /* Stack vertically by default */
+  align-items: center; /* Center items for mobile view */
+  justify-content: center; /* Center content */
+  max-width: 600px; /* Adjusted maximum width of the container for better responsiveness */
+  width: 100%; /* Make it responsive */
+  margin: 50px auto; /* Centering */
+  padding: 20px;
+  border-radius: 10px; /* Optional: for styling */
+  box-sizing: border-box; /* Ensures padding does not affect the overall width */
+}
+
+.part_photo, .part_answer {
+  flex: 1; /* Ensure they take up equal space side by side */
+  box-sizing: border-box; /* Ensures padding does not affect the overall width */
+  padding: 10px; /* Added padding for spacing */
+}
+
+.part_photo img, .part_answer img {
+  max-width: 100%; /* Ensure images are responsive and do not overflow their container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 20px; /* Optional: for styling */
+}
+
+/* Media query for screens wider than 768px */
+@media (min-width: 768px) {
+  .part_container {
+    flex-direction: row; /* Arrange side-by-side for wider screens */
+    max-width: 80%; /* Increase max width to utilize more screen space */
+    align-items: stretch; /* Ensure items stretch to fill the container height */
+  }
+
+  .part_photo, .part_answer {
+    width: 50%; /* Ensure each takes up half the space of the container */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center content horizontally */
+    display: flex; /* Use flex to align content nicely */
+    flex-direction: column; /* Stack children vertically within each */
+  }
+}
+
+  .event-info {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .event-info h2 {
+    font-size: 24px;
+    color: #6B2527;
+    font-weight: bold;
+
+  }
+  .event-info p {
+    font-size: 16px;
+    color: #666;
+  }
+  .event-info .dress-code {
+    font-weight: bold;
+    color: #333;
+  }
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.control-label {
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.form-check {
+  margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+  margin-top: 0.3rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
 </style>
 
 <% @phase = current_user&.phase || 1 %>
@@ -215,36 +301,312 @@
 
 
 
+<% elsif @phase == 2 %>
+  <% i = 0 %>
+  <%= form_for(current_user, url: user_registration_path, method: :patch) do |f| %>
+
+  <% if current_user.friday == 'yes' %>
+    <div class="friday_part">
+      <% if i % 2 == 0 %>
+        <div class="part_container">
+          <div class="part_photo">
+            <%= image_tag('friday_illustration.png', alt: 'Friday illustration') %>
+          </div>
+          <div class="part_answer">
+            <div class="event-info">
+              <h2>Friday 24th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NH Swalmen<br>
+              Netherlands<br>
+              <br>
+              Barbecue: 19h
+              <br>
+              Friday night we will enjoy some smash-burgers during a chill barbecue, while waiting with excitment for the next day
+              </p>
+              <p class="dress-code">Dress code: Casual</p>
+            </div>
+            <div class="form-group">
+              <%= f.label :answer_friday, 'Are you present at the Barbecue?', class: 'control-label' %><br>
+              <div class="form-check">
+                <%= f.radio_button :answer_friday, 'yes', class: 'form-check-input'%>
+                <%= f.label 'Yes' %>
+              </div>
+              <div class="form-check">
+                <%= f.radio_button :answer_friday, 'no', class: 'form-check-input'%>
+                <%= f.label 'No' %>
+              </div>
+            </div>
+
+ 
+          </div>
+        </div>
+      <% else %>
+        <div class="part_container">
+          <div class="part_answer">
+            <div class="event-info">
+              <h2>Friday 24th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NH Swalmen<br>
+              Netherlands<br>
+              <br>
+              Barbecue: 19h
+              <br>
+              Friday night we will enjoy some smash-burgers during a chill barbecue, while waiting with excitment for the next day
+              </p>
+              <p class="dress-code">Dress code: Casual</p>
+            </div>
+            <div class="form-group">
+              <%= f.label :answer_friday, 'Will you be present at the Barbecue?', class: 'control-label' %><br>
+              <div class="form-check">
+                <%= f.radio_button :answer_friday, 'yes', class: 'form-check-input'%>
+                <%= f.label 'Yes' %>
+              </div>
+              <div class="form-check">
+                <%= f.radio_button :answer_friday, 'no', class: 'form-check-input'%>
+                <%= f.label 'No' %>
+              </div>
+            </div>
+
+          </div>
+          <div class="part_photo">
+            <%= image_tag('friday_illustration.png', alt: 'Friday illustration') %>
+          </div>
+        </div>
+      <% end %>
+      <% i += 1 %>
+    </div>
+  <% end %>
 
 
 
+  <% if current_user.ceremony == 'yes' %>
+    <div class="ceremony_part">
+      <% if i % 2 != 0 %>
+        <div class="part_container">
+          <div class="part_answer">
+            <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Pastoor Pinckersstraat 3, <br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Ceremony: 14h
+              <br>
+              The religious ceremony will take place at the Sint Dionysiuskerk
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+              <div class="form-group">
+                <%= f.label :answer_ceremony, 'Are you present at the ceremony?', class: 'control-label' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_ceremony, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
+
+              <div class="form-check">
+                <%= f.radio_button :answer_ceremony, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
 
 
 
+          </div>
+          <div class="part_photo">
+            <%= image_tag('church_illustration.webp', alt: 'ceremony illustration') %>
+          </div>
+        </div>
+        <% else %>
+          <div class="part_container">
+            <div class="part_photo">
+              <%= image_tag('church_illustration.webp', alt: 'ceremony illustration') %>
+            </div>
+            <div class="part_answer">
+            <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Pastoor Pinckersstraat 3, <br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Ceremony: 14h
+              <br>
+              The religious ceremony will take place at the Sint Dionysiuskerk
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+            <div class="form-group">
+                <%= f.label :answer_ceremony, 'Are you present at the ceremony?', class: 'control-label' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_ceremony, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
+
+              <div class="form-check">
+                <%= f.radio_button :answer_ceremony, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
+ 
+            </div>
+          </div>
+          
+      <% end %>
+      <% i += 1 %>
+    </div>
+  <% end %>
 
 
+  <div class="reception_part">
+    <% if i % 2 != 0 %>
+      <div class="part_container">
+        <div class="part_answer">
+          <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Reception: 15h30
+              <br>
+              Lets bathe ourselves in champagne to celebrate the newlyweds (us)
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+            <div class="form-group">
+                <%= f.label :answer_reception, 'Are you present at the reception?', class: 'control-label' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_reception, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
 
+              <div class="form-check">
+                <%= f.radio_button :answer_reception, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
 
+        </div>
+        <div class="part_photo">
+          <%= image_tag('reception_illustration.webp', alt: 'ceremony illustration') %>
+        </div>
+      </div>
+      <% else %>
+        <div class="part_container">
+          <div class="part_photo">
+            <%= image_tag('reception_illustration.webp', alt: 'ceremony illustration') %>
+          </div>
+          <div class="part_answer">
+            <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Reception: 15h30
+              <br>
+              Lets bathe ourselves in champagne to celebrate the newlyweds (us)
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+            <div class="form-group">
+                <%= f.label :answer_reception, 'Are you present at the reception?', class: 'control-label' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_reception, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
 
-  
-<%elsif @phase == 2 %>
- <%i = 0%>
- <% if  current_user.friday == 'yes'%>
-  <div class="form-group">
-    you are invited on friday
+              <div class="form-check">
+                <%= f.radio_button :answer_reception, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
+
+          </div>
+        </div>
+    <% end %>
+    <% i += 1 %>
   </div>
- <% end %>
- <% if  current_user.ceremony == 'yes'%>
-   <div class="form-group">
-    you are invited at the ceremony
+
+
+  <div class="dinner_part">
+    <% if i % 2 != 0 %>
+      <div class="part_container">
+        <div class="part_answer">
+            <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Dinner: 19h
+              <br>
+              Delicious food and party to the late hours
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+            <div class="form-group">
+                <%= f.label :answer_diner, 'Will you be present at the dinner?', class: 'control-label mb-2' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_diner, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
+
+              <div class="form-check">
+                <%= f.radio_button :answer_diner, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
+            <div class="form-group">
+                <%= f.label :dietary_restriction, 'Any dietary restrictions?', class: 'control-label' %><br>
+                <%= f.text_field :dietary_restriction, class: 'form-control' %>
+              </div>
+
+        </div>
+        <div class="part_photo">
+          <%= image_tag('diner_illustration.webp', alt: 'dinner illustration') %>
+        </div>
+      </div>
+      <% else %>
+        <div class="part_container">
+          <div class="part_photo">
+            <%= image_tag('diner_illustration.webp', alt: 'dinner illustration') %>
+          </div>
+          <div class="part_answer">
+            <div class="event-info">
+              <h2>Saturday 25th May</h2>
+              <p>Kasteel Hillenraad Hillenraederlaan 12<br>
+              6071 NX Swalmen<br>
+              Netherlands<br>
+              <br>
+              Dinner: 19h
+              <br>
+              Delicious food and party to the late hours
+              </p>
+              <p class="dress-code">Dress code: festive elegant</p>
+            </div>
+            <div class="form-group">
+                <%= f.label :answer_diner, 'Will you be present at the dinner?', class: 'control-label mb-2' %><br>
+                <div class="form-check">
+                <%= f.radio_button :answer_diner, 'yes', class: 'form-check-input' %>
+                <%= f.label 'yes'%>
+              </div>
+
+              <div class="form-check">
+                <%= f.radio_button :answer_diner, 'no', class: 'form-check-input' %>
+                <%= f.label 'no' %>
+              </div>
+              </div>
+            <div class="form-group">
+                <%= f.label :dietary_restriction, 'Any dietary restrictions?', class: 'control-label' %><br>
+                <%= f.text_field :dietary_restriction, class: 'form-control' %>
+              </div>
+          </div>
+        </div>
+    <% end %>
+    <% i += 1 %>
   </div>
- <% end %>
-   <div class="form-group">
-    you are invited at the cocktail
+  <div class="form-actions" style="display: flex; justify-content: center; align-items: center">
+    <%= f.submit 'Save your informations', class: 'btn btn-primary' %>
   </div>
-  <div class="form-group">
-    you are invited at the dinner
-  </div>
+  <% end %>
 <% end %>
-  
-

@@ -123,7 +123,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :seating_question_13, :seating_question_14, :seating_question_15,
       :current_question, :title, :current_question_id, :telephone_number,
       :family_name, :address, :address_nr, :pays, :city, :phase,
-      :apartment, :postal_code, :vip, :personal_message_us, :personal_message_them, :friday, :ceremony, :dietary_restriction
+      :apartment, :postal_code, :vip, :personal_message_us,
+      :personal_message_them, :friday, :ceremony, :dietary_restriction, :answer_friday, :answer_ceremony, :answer_reception, :answer_diner,
+      :answered_total, numericality: { greater_than_or_equal_to: 0 }
     )
   end
 end
