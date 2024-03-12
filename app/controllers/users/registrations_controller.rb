@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def hidden
-    @users = User.all
+    @users = User.order(:email)
     @user = current_user
     @new_user = User.new()
   
@@ -99,6 +99,61 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user.destroy
     redirect_to hidden_path, notice: 'User was successfully deleted.'
   end
+
+  def toggle_ceremony
+    @user = User.find(params[:id])
+    new_status = @user.ceremony == 'yes' ? 'no' : 'yes'
+    @user.update(ceremony: new_status)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def toggle_friday
+    @user = User.find(params[:id])
+    new_status = @user.friday == 'yes' ? 'no' : 'yes'
+    @user.update(friday: new_status)
+    respond_to do |format|
+      format.js
+    end 
+  end
+  
+  def answerfriday
+    @user = User.find(params[:id])
+    new_status = @user.answer_friday == 'yes' ? 'no' : 'yes'
+    @user.update(answer_friday: new_status)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def answerceremony
+    @user = User.find(params[:id])
+    new_status = @user.answer_ceremony == 'yes' ? 'no' : 'yes'
+    @user.update(answer_ceremony: new_status)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def answerreception
+    @user = User.find(params[:id])
+    new_status = @user.answer_reception == 'yes' ? 'no' : 'yes'
+    @user.update(answer_reception: new_status)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def answerdinner
+    @user = User.find(params[:id])
+    new_status = @user.answer_diner == 'yes' ? 'no' : 'yes'
+    @user.update(answer_diner: new_status)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def authenticate_user_for_hidden_and_seating

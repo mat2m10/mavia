@@ -36,7 +36,7 @@ Question.create!(
 
 matthieu = User.create!(
   email: 'mat@dh.com',
-  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Matthieu',
   current_question_id: 1, # Set the desired current question ID for this user
   is_admin: true,
@@ -47,7 +47,7 @@ matthieu = User.create!(
 
 User.create!(
   email: 'liviadeguerre@gmail.com',
-  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Livia',
   current_question_id: 1, # Set the desired current question ID for this user
   phase: 1,
@@ -59,7 +59,7 @@ User.create!(
 
 User.create!(
   email: 'matthieu.dehemptinne@gmail.com',
-  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Matthieu',
   current_question_id: 1, # Set the desired current question ID for this user
   phase: 1,
@@ -1931,7 +1931,7 @@ User.create!(
 # Create Harold without admin privileges
 User.create!(
   email: 'ami@dg.com',
-  password: 'boitolo', # Make sure to use a secure password hashing mechanism in a real-world scenario
+  password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Amelie',
   current_question_id: 1, # Set the desired current question ID for this user
   phase: 2,

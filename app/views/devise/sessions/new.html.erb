@@ -118,6 +118,10 @@
       padding: 80px; /* Reduce padding for smaller screens */
     }
   }
+
+  .hidden {
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -132,7 +136,7 @@
     </div>
     <div class="white-box">
       <h2>Answer their invitation</h2>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin", "data-turbo" => "false" }) do |f| %>
         <div class="form-label-group">
           <%= f.input :email,
                       required: false,
@@ -143,14 +147,20 @@
           %>
         </div>
 
-        <div class="form-label-group">
-          <%= f.input :password,
-                      required: false,
-                      input_html: { autocomplete: "current-password", class: "form-control", placeholder: "Password" },
-                      label_html: { class: "sr-only" },
-                      wrapper_html: { class: "form-group" }
-          %>
-        </div>
+      <div class="form-label-group hidden">
+        <%= f.input :password,
+                    required: false,
+                    input_html: {
+                        autocomplete: "current-password",
+                        class: "form-control",
+                        placeholder: "Password",
+                        value: "mavia2024"  # Set default password value
+                    },
+                    label_html: { class: "sr-only" },
+                    wrapper_html: { class: "form-group" }
+        %>
+      </div>
+
 
         <div class="form-actions">
           <%= f.button :submit, "Log in", class: "btn btn-lg btn-primary" %>
@@ -166,3 +176,9 @@
 
 </body>
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Automatically fill in the password
+    document.querySelector(".form-control[placeholder='Password']").value = "mavia2024";
+  });
+</script>

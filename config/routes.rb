@@ -33,5 +33,15 @@ Rails.application.routes.draw do
     patch 'users/:id', to: 'users/registrations#update2', as: :registration
     patch 'users/:id/reset_question', to: 'users/registrations#reset_question', as: :reset_question
     delete 'users/:id', to: 'users/registrations#destroy', as: :user_registration_destroy
+    put 'users/:id/toggle_friday', to: 'users/registrations#toggle_friday', as: :user_registrations_togglefriday
+    put 'users/:id/toggle_ceremony', to: 'users/registrations#toggle_ceremony', as: :user_registrations_toggleceremony
+
+    put 'users/:id/answerfriday', to: 'users/registrations#answerfriday', as: :user_registrations_answerfriday
+    put 'users/:id/answerceremony', to: 'users/registrations#answerceremony', as: :user_registrations_answerceremony
+    put 'users/:id/answerreception', to: 'users/registrations#answerreception', as: :user_registrations_answerreception
+    put 'users/:id/answerdinner', to: 'users/registrations#answerdinner', as: :user_registrations_answerdinner
+
+    
+
   end
 end

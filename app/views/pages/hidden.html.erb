@@ -76,39 +76,77 @@
     <thead>
       <tr>
         <th>Email</th>
-        <th>Name</th>
-        <th>Role</th>
-        <th>invited to Ceremony</th> <!-- New column header for Ceremony -->
-        <th>invited Friday</th> <!-- New column header for Friday -->
+        <th>Answered Save the date?</th>
+        <th>invited Friday</th>
+        <th>invited to Ceremony</th>
+        <th>Answer friday?</th>
+        <th>Answer ceremony?</th>
+        <th>Answer reception?</th>
+        <th>Answer dinner?</th>
+
         <th>Dietary Restriction</th>
-        <th>Action</th>
-        <th>Answered Save the date</th>
         <th>Reset Seating</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
    <% @users.each do |user| %>
+   <% has_answered = user.answer_friday == 'yes' ||user.answer_ceremony == 'yes' || user.answer_reception == 'yes' || user.answer_diner == 'yes' %>
+
     <tr>
-      <td><%= user.email %></td>
-      <td><%= user.name %></td>
-      <td><%= user.is_admin ? 'Admin' : 'User' %></td>
-      <td><%= user.ceremony %></td> <!-- New column for Ceremony -->
-      <td><%= user.friday %></td> <!-- New column for Friday -->
-      <td><%= user.dietary_restriction %></td>
+      
       <td>
       <!-- Toggle Edit Form Button -->
-        <button onclick="toggleEditForm(<%= user.id %>)" type="button" class="btn btn-primary">
-        Toggle
+        <button onclick="toggleEditForm(<%= user.id %>)">
+        <%= user.email %>
         </button>
         <!-- Reset Question Button -->
       </td>
+      
       <td>
         <!-- Display 'Has Answered' if the address is not empty -->
         <% if user.address.present? %>
           <span class="custom-badge badge-margin">Answered</span>
         <% end %>
       </td>
+
+      <td>
+        <%= button_to user.friday, user_registrations_togglefriday_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "friday-button-#{user.id}" %>
+      </td>
+      <td>
+        <%= button_to user.ceremony, user_registrations_toggleceremony_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "ceremony-button-#{user.id}" %>
+      </td>
+
+      <% if !has_answered %>
+      <td>
+        <%= button_to user.answer_friday, user_registrations_answerfriday_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "friday_answer-button-#{user.id}" %>
+      </td>
+      <td>
+        <%= button_to user.answer_ceremony, user_registrations_answerceremony_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "ceremony_answer-button-#{user.id}" %>
+      </td>
+      <td>
+        <%= button_to user.answer_reception, user_registrations_answerreception_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "reception_answer-button-#{user.id}" %>
+      </td>
+      <td>
+        <%= button_to user.answer_diner, user_registrations_answerdinner_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "dinner_answer-button-#{user.id}" %>
+      </td>
+      
+      <% else %>
+      <td>
+        <%= button_to user.answer_friday, user_registrations_answerfriday_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "friday_answer-button-#{user.id}", style: "background-color: green;"%>
+      </td>
+      <td>
+        <%= button_to user.answer_ceremony, user_registrations_answerceremony_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "ceremony_answer-button-#{user.id}" , style: "background-color: green;"%>
+      </td>
+      <td>
+        <%= button_to user.answer_reception, user_registrations_answerreception_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "reception_answer-button-#{user.id}" , style: "background-color: green;"%>
+      </td>
+      <td>
+        <%= button_to user.answer_diner, user_registrations_answerdinner_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "dinner_answer-button-#{user.id}" , style: "background-color: green;"%>
+      </td>
+      <% end %>
+      <td><%= user.dietary_restriction %></td>
+
       <td>
       <!-- Toggle Edit Form Button -->
         <%= form_with url: reset_question_path(user), method: :patch do %>
@@ -212,6 +250,7 @@
   </tr>
 <% end %>
 
+
 <script>
   function toggleEditForm(userId) {
     var form = document.getElementById('editForm' + userId);
@@ -233,4 +272,27 @@
     });
   });
 });
+
+var button = document.querySelector('#ceremony-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.ceremony %>';
+
+var button = document.querySelector('#friday-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.friday %>';
+
+var button = document.querySelector('#friday_answer-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.answer_friday %>';
+
+var button = document.querySelector('#ceremony_answer-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.answer_ceremony %>';
+var button = document.querySelector('#reception_answer-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.answer_reception %>';
+
+var button = document.querySelector('#dinner_answer-button-<%= @user.id %>');
+// Update the button text based on the new status
+button.textContent = '<%= @user.answer_diner %>';
 </script>
