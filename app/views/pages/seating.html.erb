@@ -60,6 +60,7 @@
   <%= form_tag(update_current_question_path, method: :put, id: 'question-form') do %>
     <div class="image-row">
       <% @question.options.each do |option| %>
+      <%= option%>
         <div class="clickable-image-container">
           <%= image_tag option, class: 'option-image img-fluid rounded clickable-image', data: { value: option } %>
           <%= radio_button_tag :selected_option, option, class: 'option-radio', style: 'display:none;' %>
