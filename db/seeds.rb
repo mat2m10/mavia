@@ -1,3 +1,7 @@
+# Destroy all existing Question and User records
+Question.destroy_all
+User.destroy_all
+
 Question.create!(
   question_text: 'Salt or Paprika',
   options: ['01_salt','01_paprika']
@@ -50,7 +54,7 @@ User.create!(
   password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Livia',
   current_question_id: 1, # Set the desired current question ID for this user
-  phase: 1,
+  phase: 2,
   vip: 1,
   personal_message_us: "You are so sexy",
   is_admin: true,
@@ -62,7 +66,7 @@ User.create!(
   password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Matthieu',
   current_question_id: 1, # Set the desired current question ID for this user
-  phase: 1,
+  phase: 2,
   vip: 1,
   personal_message_us: "You are so sexy",
   is_admin: true,
@@ -73,7 +77,7 @@ User.create!(
   password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
   name: 'Victor',
   current_question_id: 1, # Set the desired current question ID for this user
-  phase: 1,
+  phase: 2,
   vip: 1,
   personal_message_us: "Qu'est ce que c'est que ce pate?"
 )

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     put 'update_current_question', to: 'users/registrations#update_current_question'
     get 'hidden', to: 'users/registrations#hidden'
     post 'hidden', to: 'users/registrations#hidden'
+
+    get 'hidden_questions', to: 'users/registrations#hidden_questions'
+    post 'hidden_questions', to: 'users/registrations#hidden_questions'
+    patch 'hidden_questions', to: 'users/registrations#update_question'
+
+
     get 'reset_submission', to: 'users/registrations#reset_submission', as: 'reset_submission'
     patch 'users/:id', to: 'users/registrations#update2', as: :registration
     patch 'users/:id/reset_question', to: 'users/registrations#reset_question', as: :reset_question

@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Question text</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= form_tag(hidden_questions_path, method: :patch, id: "question-form", data: { turbo: false }) do %>
+  <% @questions.each do |question| %>
+    <tr>
+      <td>
+        <%= hidden_field_tag "questions[][id]", question.id %>
+        <%= text_field_tag "questions[][question_text]", question.question_text %>
+      </td>
+      <td>
+        <% question.options.each_with_index do |option, index| %>
+          <%= text_field_tag "questions[][options][]", option %>
+        <% end %>
+        <!-- Empty option field -->
+        <%= text_field_tag "questions[][options][]", nil, placeholder: 'Add option', class: 'option-field' %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan="2">
+      <%= submit_tag "Save Changes", class: "btn btn-primary" %>
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>

@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
-  before_action :authenticate_user_for_hidden_and_seating, only: [:hidden, :seating]
-  before_action :check_admin, only: [:hidden]
+  before_action :authenticate_user_for_hidden_and_seating, only: [:hidden, :hidden_questions, :seating]
+  before_action :check_admin, only: [:hidden, :hidden_questions]
+  before_action :set_cache_headers
   # GET /resource/sign_up
   # def new
   #   super
@@ -11,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @users = User.order(:email)
     @user = current_user
     @new_user = User.new()
-  
     if request.post?
       @new_user = User.new(user_params)
       if @new_user.save
@@ -23,6 +23,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render 'pages/hidden'
     end
+  end
+  
+  def hidden_questions
+    @questions = Question.order(:id)
+    render 'pages/hidden_questions'
+  end
+  
+  def update_question
+    update_questions_params.each do |question_params|
+      question_id = question_params[:id]
+      next unless question_id.present?
+  
+      question = Question.find_by(id: question_id)
+      if question
+        options = question_params[:options].reject(&:blank?)
+        question.update(question_text: question_params[:question_text], options: options)
+      end
+    end
+    
+    redirect_to hidden_questions_path, notice: "Questions updated successfully."
+  end
+  
+  
+  
+  def update_questions_params
+    params.permit(questions: [:id, :question_text, options: []])[:questions]
   end
   
   def update
@@ -182,5 +208,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :personal_message_them, :friday, :ceremony, :dietary_restriction, :answer_friday, :answer_ceremony, :answer_reception, :answer_diner,
       :answered_total, numericality: { greater_than_or_equal_to: 0 }
     )
+  end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
   end
 end
