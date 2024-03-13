@@ -36,8 +36,7 @@ Question.create!(
 
 
 
-
-
+=begin
 matthieu = User.create!(
   email: 'mat@dh.com',
   password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
@@ -1941,4 +1940,6 @@ User.create!(
   phase: 2,
   is_admin: true
 )
+
+=end
 puts 'Seeds created successfully!'

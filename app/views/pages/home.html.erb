@@ -152,6 +152,30 @@
   border-radius: 20px; /* Optional: for styling */
 }
 
+  .end-button {
+    text-align: center; /* Center align the content */
+    padding: 20px; /* Add padding to the sides */
+    margin: auto; /* Center the div itself if needed */
+    max-width: 600px; /* Maximum width of the end-button content */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow around the div */
+    border-radius: 8px; /* Optional: Rounds the corners of the div */
+    background-color: #f8f9fa; /* Light grey background */
+  }
+  .end-button .form-check-input {
+    /* Adds a border and slight shading to the radio button itself */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc; /* Light grey border */
+    width: 20px; /* Increase size for visibility */
+    height: 20px; /* Increase size for visibility */
+    margin-right: 10px; /* Space between radio button and label */
+  }
+
+
+  /* Optionally, adjust the hover state for better interactivity */
+  .end-button .form-check-input:hover + .form-check-label {
+    background-color: #e6e6e6; /* Slightly darker background on hover */
+    cursor: pointer; /* Changes the cursor to indicate clickable area */
+  }
 /* Media query for screens wider than 768px */
 @media (min-width: 768px) {
   .part_container {
@@ -612,6 +636,30 @@
       <% end %>
       <% i += 1 %>
     </div>
+
+
+<div class="end-button">
+<div class="form-group">
+  <%= f.label :plus_one_attending, 'Are you also answering for a plus-one?', class: 'control-label' %>
+  <div class="form-check">
+    <%= radio_button_tag(:plus_one_attending, 'yes', false, class: 'form-check-input', id: 'plus_one_yes') %>
+    <%= label_tag(:plus_one_yes, 'Yes', class: 'form-check-label') %>
+  </div>
+  <div class="form-check">
+    <%= radio_button_tag(:plus_one_attending, 'no', true, class: 'form-check-input', id: 'plus_one_no') %>
+    <%= label_tag(:plus_one_no, 'No', class: 'form-check-label') %>
+  </div>
+</div>
+
+<div class="form-group" id="plus_one_name_group" style="display: none;">
+I would anyway recommend the plus-one to connect here with his.her.them.theyre email so that they can also play the table seating game
+<br>
+<br>
+
+  <%= f.label :plusones, "Plus-one's name:", class: 'control-label' %>
+  <%= f.text_field :plusones, class: 'form-control' %>
+</div>
+
     <% if !has_answered %>
       <!-- If has_answered is not true, show the save information button -->
       <div class="form-actions" style="justify-content: center; align-items: center">
@@ -626,3 +674,24 @@
     <% end %>
   <% end %>
 <% end %>
+    </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const yesButton = document.getElementById('plus_one_yes');
+    const noButton = document.getElementById('plus_one_no');
+    const nameGroup = document.getElementById('plus_one_name_group');
+
+    yesButton.addEventListener('change', function() {
+      if (this.checked) {
+        nameGroup.style.display = 'block';
+      }
+    });
+
+    noButton.addEventListener('change', function() {
+      if (this.checked) {
+        nameGroup.style.display = 'none';
+      }
+    });
+  });
+</script>

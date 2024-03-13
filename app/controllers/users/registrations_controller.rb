@@ -51,6 +51,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(questions: [:id, :question_text, options: []])[:questions]
   end
   
+
+
+  def create_question
+    new_question_params = params.require(:new_question).permit(:question_text, options: [])
+    options = new_question_params[:options].reject(&:blank?)
+    question = Question.create(question_text: new_question_params[:question_text], options: options)
+    
+    if question.persisted?
+      redirect_to hidden_questions_path, notice: "Question created successfully."
+    else
+      flash.now[:error] = "Failed to create question."
+      render 'pages/hidden_questions'
+    end
+  end
+
+  def destroy_question
+    question = Question.find(params[:id])
+    question.destroy
+    redirect_to hidden_questions_path, notice: "Question deleted successfully."
+  end
+
+
   def update
     if current_user.update(user_params)
       @submitted = true
@@ -206,7 +228,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :family_name, :address, :address_nr, :pays, :city, :phase,
       :apartment, :postal_code, :vip, :personal_message_us,
       :personal_message_them, :friday, :ceremony, :dietary_restriction, :answer_friday, :answer_ceremony, :answer_reception, :answer_diner,
-      :answered_total, numericality: { greater_than_or_equal_to: 0 }
+      :answered_total, :plusones, numericality: { greater_than_or_equal_to: 0 }
     )
   end
 
