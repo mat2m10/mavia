@@ -41,7 +41,6 @@ Question.create!(
 # ...
 
 
-
 =begin
 User.destroy_all
 matthieu = User.create!(
@@ -1947,6 +1946,6 @@ User.create!(
   phase: 2,
   is_admin: true
 )
-
 =end
+
 puts 'Seeds created successfully!'

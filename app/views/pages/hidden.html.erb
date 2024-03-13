@@ -164,80 +164,66 @@
       <td colspan="5">
       <%= simple_form_for(user, url: registration_path(user), method: :patch) do |f| %>
         <div class="form-group">
-          <%= f.label :email, 'Email' %>
-          <%= f.input :email, required: true, label: false, input_html: { value: user.email, class: "form-control" } %>
-        </div>
-        <div class="form-group">
           <%= f.label :title, 'Title' %>
-          <%= f.input :title, required: true, label: false, input_html: { value: user.title, class: "form-control" } %>
+          <%= f.input :title, required: true, label: false, input_html: { value: user.title, class: "form-control", id: "user_title_#{user.id}" } %>
         </div>
         <div class="form-group">
           <%= f.label :name, 'Name' %>
-          <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control" } %>
+          <%= f.input :name, required: true, label: false, input_html: { value: user.name, class: "form-control", id: "user_name_#{user.id}" } %>
         </div>
-        
         <div class="form-group">
           <%= f.label :family_name, 'Family name' %>
-          <%= f.input :family_name, required: true, label: false, input_html: { value: user.family_name, class: "form-control" } %>
+          <%= f.input :family_name, required: true, label: false, input_html: { value: user.family_name, class: "form-control", id: "user_family_name_#{user.id}" } %>
         </div>
-
         <div class="form-group">
-          <%= f.label :address, 'Adress' %>
-          <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control" } %>
+          <%= f.label :address, 'Address' %>
+          <%= f.input :address, required: true, label: false, input_html: { value: user.address, class: "form-control", id: "user_address_#{user.id}" } %>
         </div>
-
-
         <div class="form-group">
           <%= f.label :pays, 'Country' %>
-          <%= f.input :pays, required: true, label: false, input_html: { value: user.pays, class: "form-control" } %>
+          <%= f.input :pays, required: true, label: false, input_html: { value: user.pays, class: "form-control", id: "user_pays_#{user.id}" } %>
         </div>
-
         <div class="form-group">
           <%= f.label :city, 'City' %>
-          <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control" } %>
+          <%= f.input :city, required: true, label: false, input_html: { value: user.city, class: "form-control", id: "user_city_#{user.id}" } %>
         </div>
-
         <div class="form-group">
-          <%= f.label :apartment, 'apartment' %>
-          <%= f.input :apartment, required: true, label: false, input_html: { value: user.apartment, class: "form-control" } %>
+          <%= f.label :apartment, 'Apartment' %>
+          <%= f.input :apartment, required: true, label: false, input_html: { value: user.apartment, class: "form-control", id: "user_apartment_#{user.id}" } %>
         </div>
-
         <div class="form-group">
-          <%= f.label :postal_code, 'postal_code' %>
-          <%= f.input :postal_code, required: true, label: false, input_html: { value: user.postal_code, class: "form-control" } %>
+          <%= f.label :postal_code, 'Postal Code' %>
+          <%= f.input :postal_code, required: true, label: false, input_html: { value: user.postal_code, class: "form-control", id: "user_postal_code_#{user.id}" } %>
         </div>
-
         <div class="form-group">
-          <%= f.label :personal_message_us, 'Our personnal message' %>
-          <%= f.input :personal_message_us, required: true, label: false, input_html: { value: user.personal_message_us, class: "form-control" } %>
+          <%= f.label :personal_message_us, 'Our Personal Message' %>
+          <%= f.input :personal_message_us, required: true, label: false, input_html: { value: user.personal_message_us, class: "form-control", id: "user_personal_message_us_#{user.id}" } %>
         </div>
-
         <div class="form-group">
-          <%= f.label :personal_message_them, 'Their personnal message' %>
-          <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control" } %>
+          <%= f.label :personal_message_them, 'Their Personal Message' %>
+          <%= f.input :personal_message_them, required: true, label: false, input_html: { value: user.personal_message_them, class: "form-control", id: "user_personal_message_them_#{user.id}" } %>
         </div>
-
-      <div class="form-group">
+        <div class="form-group">
           <%= f.label :ceremony, 'Ceremony' %>
-          <%= f.input :ceremony, label: false, input_html: { value: user.ceremony, class: "form-control" } %>
+          <%= f.input :ceremony, label: false, input_html: { value: user.ceremony, class: "form-control", id: "user_ceremony_#{user.id}" } %>
         </div>
         <div class="form-group">
           <%= f.label :friday, 'Friday' %>
-          <%= f.input :friday, label: false, input_html: { value: user.friday, class: "form-control" } %>
+          <%= f.input :friday, label: false, input_html: { value: user.friday, class: "form-control", id: "user_friday_#{user.id}" } %>
         </div>
         <div class="form-group">
           <%= f.label :dietary_restriction, 'Dietary Restriction' %>
-          <%= f.input :dietary_restriction, label: false, input_html: { value: user.dietary_restriction, class: "form-control" } %>
+          <%= f.input :dietary_restriction, label: false, input_html: { value: user.dietary_restriction, class: "form-control", id: "user_dietary_restriction_#{user.id}" } %>
         </div>
 
         <div class="form-group">
           <%= f.label :phase, 'phase' %>
-          <%= f.input :phase, required: true, label: false, input_html: { value: user.phase, class: "form-control" } %>
+          <%= f.input :phase, required: true, label: false, input_html: { value: user.phase, class: "form-control", id: "user_phase_#{user.id}" } %>
         </div>
 
         <div class="form-group">
           <%= f.label :is_admin, 'Role' %>
-          <%= f.select :is_admin, [['Admin', true], ['User', false]], selected: user.is_admin, include_blank: false, label: false, class: "form-control" %>
+          <%= f.select :is_admin, [['Admin', true], ['User', false]], { selected: user.is_admin, include_blank: false, label: false }, { class: "form-control", id: "user_is_admin_#{user.id}" } %>
         </div>
 
           <div class="form-group mt-3">
