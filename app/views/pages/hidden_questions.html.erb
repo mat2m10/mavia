@@ -22,7 +22,7 @@
         <%= text_field_tag "questions[][options][]", nil, placeholder: 'Add option', class: 'option-field' %>
       </td>
       <td>
-        <%= form_tag(delete_question_path(question), method: :delete, class: "delete-question-form", data: { confirm: "Are you sure you want to delete this question?" }) do %>
+        <%= form_tag(delete_question_path(question), method: :delete, class: "delete-question-form", data: { turbo: false, confirm: "Are you sure you want to delete this question?" }) do %>
           <%= hidden_field_tag :_method, :delete %>
           <%= button_tag "", type: "submit", class: "btn btn-danger", title: "Delete Question" do %>
             <i class="fas fa-times"></i> <!-- Font Awesome icon for a red cross -->
