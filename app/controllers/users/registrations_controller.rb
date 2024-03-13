@@ -25,6 +25,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   def hidden_questions
     @questions = Question.order(:id)
     render 'pages/hidden_questions'
@@ -64,6 +78,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     question.destroy
     redirect_to hidden_questions_path, notice: "Question deleted successfully."
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   def update
@@ -108,7 +137,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def seating
     @user = current_user
-    @question = Question.find(@user.current_question_id) || Question.first # Assuming you want to start with the first question if none is set
+    @question = Question.find_by(order_nr: @user.current_question_id) || Question.find_by(order_nr: 1)
     render 'pages/seating'
   end
 

@@ -48,7 +48,7 @@
 <% @phase = current_user&.phase || 1 %>
 <%= render "shared/navbar" %>
 
-<% if @question.id == 6 %>
+<% if @question.order_nr == 6 %>
 
 <div class="center-text">
   <h1>Whouhouw, you answered everything!</h1>
@@ -68,7 +68,7 @@
       <% end %>
     </div>
 
-    <%= hidden_field_tag :question_id, @question.id %>
+    <%= hidden_field_tag :question_id, @question.order_nr %>
   <% end %>
 </div>
 
