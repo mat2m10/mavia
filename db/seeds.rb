@@ -1,6 +1,6 @@
 # Destroy all existing Question and User records
 Question.destroy_all
-User.destroy_all
+
 
 Question.create!(
   question_text: 'Salt or Paprika',
@@ -36,7 +36,8 @@ Question.create!(
 
 
 
-=begin
+#=begin
+User.destroy_all
 matthieu = User.create!(
   email: 'mat@dh.com',
   password: 'mavia2024', # Make sure to use a secure password hashing mechanism in a real-world scenario
@@ -1941,5 +1942,5 @@ User.create!(
   is_admin: true
 )
 
-=end
+#=end
 puts 'Seeds created successfully!'
