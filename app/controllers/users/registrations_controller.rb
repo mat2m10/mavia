@@ -176,54 +176,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
     new_status = @user.ceremony == 'yes' ? 'no' : 'yes'
     @user.update(ceremony: new_status)
-    respond_to do |format|
-      format.js
-    end
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
   
   def toggle_friday
     @user = User.find(params[:id])
     new_status = @user.friday == 'yes' ? 'no' : 'yes'
     @user.update(friday: new_status)
-    respond_to do |format|
-      format.js
-    end 
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
   
   def answerfriday
     @user = User.find(params[:id])
     new_status = @user.answer_friday == 'yes' ? 'no' : 'yes'
     @user.update(answer_friday: new_status)
-    respond_to do |format|
-      format.js
-    end
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
   
   def answerceremony
     @user = User.find(params[:id])
     new_status = @user.answer_ceremony == 'yes' ? 'no' : 'yes'
     @user.update(answer_ceremony: new_status)
-    respond_to do |format|
-      format.js
-    end
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
   
   def answerreception
     @user = User.find(params[:id])
     new_status = @user.answer_reception == 'yes' ? 'no' : 'yes'
     @user.update(answer_reception: new_status)
-    respond_to do |format|
-      format.js
-    end
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
   
   def answerdinner
     @user = User.find(params[:id])
     new_status = @user.answer_diner == 'yes' ? 'no' : 'yes'
     @user.update(answer_diner: new_status)
-    respond_to do |format|
-      format.js
-    end
+    redirect_to hidden_path, notice: 'suck my wiener.'
   end
 
   private
