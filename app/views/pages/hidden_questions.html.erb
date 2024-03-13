@@ -13,7 +13,6 @@
   <tbody>
     <!-- Edit existing questions form -->
     <%= form_tag(update_question_path, method: :post, id: "question-form") do %>
-
       <% @questions.each do |question| %>
         <tr>
           <td>
@@ -31,7 +30,7 @@
             <%= text_field_tag "questions[][options][]", nil, placeholder: 'Add option', class: 'option-field' %>
           </td>
           <td>
-            <%= button_to(delete_question_path(question), method: :delete, class: "delete-question-form", data: { confirm: "Are you sure?" }) do %>
+            <%= button_tag type: 'button', class: 'btn btn-danger delete-question-form', data: { confirm: "Are you sure?", url: delete_question_path(question) } do %>
               <i class="fas fa-times"></i> <!-- Icon for delete action -->
             <% end %>
           </td>
@@ -63,3 +62,22 @@
     <% end %>
   </tbody>
 </table>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.delete-question-form').forEach(function(button) {
+      button.addEventListener('click', function() {
+        if (confirm(this.dataset.confirm)) {
+          fetch(this.dataset.url, {
+            method: 'DELETE',
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+            },
+            credentials: 'same-origin'
+          });
+        }
+      });
+    });
+  });
+</script>

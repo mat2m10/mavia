@@ -24,20 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render 'pages/hidden'
     end
   end
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
+  # Questions
 
   def hidden_questions
     @questions = Question.order(:id)
@@ -45,20 +33,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def update_question
-    Rails.logger.debug "Update Questions Params: #{update_questions_params.inspect}"
     update_questions_params.each do |question_params|
-      # Your existing update logic
+      question = Question.find(question_params["id"])
+      question.update(order_nr: question_params["order_nr"], question_text: question_params["question_text"], options: question_params["options"].reject(&:blank?))
     end
-    
+  
     redirect_to hidden_questions_path, notice: "Questions updated successfully."
   end
   
-  
-  
   def update_questions_params
-    params.permit(questions: [:id, :question_text, options: []])[:questions]
+    params.require(:questions).map do |question|
+      question.permit(:order_nr, :id, :question_text, options: [])
+    end
   end
-
 
   def create_question
     new_question_params = params.require(:new_question).permit(:question_text, options: [])
@@ -76,24 +63,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def destroy_question
     question = Question.find(params[:id])
     question.destroy
+
     redirect_to hidden_questions_path, notice: "Question deleted successfully."
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  # User
 
   def update
     if current_user.update(user_params)
