@@ -4,31 +4,37 @@ Question.destroy_all
 
 Question.create!(
   question_text: 'Salt or Paprika',
-  options: ['01_salt','01_paprika']
+  options: ['01_salt','01_paprika'],
+  order_nr: 1
 )
 
 Question.create!(
   question_text: 'Which pokemon',
-  options: ['02_charmander','02_squirtle','02_bulbasaur']
+  options: ['02_charmander','02_squirtle','02_bulbasaur'],
+  order_nr: 2
 )
 
 Question.create!(
   question_text: 'Which hogwarts house',
-  options: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin']
+  options: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin'],
+  order_nr: 3
 )
 
 Question.create!(
   question_text: 'Where would you rather be friday evening',
-  options: ['04_browncafe','04_clubbing','04_tabletop']
+  options: ['04_browncafe','04_clubbing','04_tabletop'],
+  order_nr: 4
 )
 # Add more questions as needed
 Question.create!(
   question_text: 'What do you prefer?',
-  options: ['whisky','gin']
+  options: ['whisky','gin'],
+  order_nr: 5
 )
 Question.create!(
   question_text: 'the end',
-  options: ['NaN','NaN']
+  options: ['NaN','NaN'],
+  order_nr: 6
 )
 
 # Add 11 more questions with similar structure

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     get 'hidden_questions', to: 'users/registrations#hidden_questions'
     post 'hidden_questions', to: 'users/registrations#hidden_questions'
-    patch 'hidden_questions', to: 'users/registrations#update_question'
+    post 'update_questions', to: 'users/registrations#update_question', as: :update_question
     post 'create_question', to: 'users/registrations#create_question'
     delete 'questions/:id', to: 'users/registrations#destroy_question', as: :delete_question
 

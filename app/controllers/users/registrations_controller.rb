@@ -31,15 +31,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def update_question
+    Rails.logger.debug "Update Questions Params: #{update_questions_params.inspect}"
     update_questions_params.each do |question_params|
-      question_id = question_params[:id]
-      next unless question_id.present?
-  
-      question = Question.find_by(id: question_id)
-      if question
-        options = question_params[:options].reject(&:blank?)
-        question.update(question_text: question_params[:question_text], options: options)
-      end
+      # Your existing update logic
     end
     
     redirect_to hidden_questions_path, notice: "Questions updated successfully."
@@ -50,7 +44,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update_questions_params
     params.permit(questions: [:id, :question_text, options: []])[:questions]
   end
-  
 
 
   def create_question
@@ -130,6 +123,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to seating_path
   end
 
+
+  
   def reset_question
     user = User.find(params[:id])
     user.update(current_question_id: 1)
