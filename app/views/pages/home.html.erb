@@ -333,7 +333,16 @@
 
 
 <% elsif @phase == 2 %>
+
 <% has_answered = current_user.answer_friday == 'yes' || current_user.answer_ceremony == 'yes' || current_user.answer_reception == 'yes' || current_user.answer_diner == 'yes' %>
+
+  <% if has_answered %>
+      <!-- If has_answered is true, show the thank you message and prompt for more information -->
+    <div class="form-actions answered-success" style="justify-content: center; align-items: center; background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <h2>Thank you for your answer! Want to influence the <strong><%= link_to 'table seatings?', seating_path, style: "text-decoration: underline;" %></strong> answer these questions.</h2>
+    </div>
+  <% end %>
+
   <% i = 0 %>
   <%= form_for(current_user, url: user_registration_path, method: :patch) do |f| %>
     <% if current_user.friday == 'yes' %>
@@ -665,12 +674,6 @@ I would anyway recommend the plus-one to connect here with his.her.them.theyre e
       <div class="form-actions" style="justify-content: center; align-items: center">
         <%= f.submit 'Save your informations', class: 'btn btn-primary' %>
       </div>
-    <% else %>
-      <!-- If has_answered is true, show the thank you message and prompt for more information -->
-    <div class="form-actions" style="justify-content: center; align-items: center; background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <h2>Thank you for your answer! Want to influence the <strong><%= link_to 'table seatings?', seating_path, style: "text-decoration: underline;" %></strong> answer these questions.</h2>
-    </div>
-
     <% end %>
   <% end %>
 <% end %>
