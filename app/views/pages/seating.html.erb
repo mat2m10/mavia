@@ -1,10 +1,10 @@
 <style>
   .clickable-image-container {
-    width: 150px; /* Adjust the width as needed */
-    height: 150px; /* Adjust the height as needed */
+    width: 200px; /* Default width */
+    height: 200px; /* Default height */
     overflow: hidden;
-    margin: 10px; /* Adjust the margin for spacing between images */
-    padding: 20px; /* Add more padding to the container */
+    margin: 10px;
+    padding: 20px;
   }
 
   .clickable-image {
@@ -18,49 +18,81 @@
     transform: scale(1.1);
     cursor: pointer;
   }
-  
-  .center-container {
+
+  .center-container, .center-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: auto; /* Center horizontally */
-    margin-top: 50vh; /* Center vertically */
+    margin: auto;
+    margin-top: 50vh;
+  }
+
+  .center-container {
     transform: translateY(-90%);
   }
-  
-  .center-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: auto; /* Center horizontally */
-    margin-top: 40vh; /* Center vertically */
-  }
-  
+
   .image-row {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Add space above the images */
+    margin-top: 20px;
+  }
+  .center-container, .center-text {
+    /* Existing styles */
+    padding-top: 60px; /* Add padding to ensure content starts below the navbar */
+    margin-top: 0; /* Adjust if necessary to balance the added padding */
+    transform: translateY(0%); /* Adjust or remove as needed to align content */
+  }
+
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .center-container, .center-text {
+      padding-top: 60px; /* Ensure padding is sufficient for the navbar */
+      /* Other responsive adjustments */
+    }
+  }
+  
+  /* Media query for screens narrower than 768px */
+  @media (max-width: 768px) {
+    .clickable-image-container {
+      width: 100px; /* Smaller width */
+      height: 100px; /* Smaller height */
+      padding: 10px; /* Adjusted padding */
+    }
+
+    .center-container, .center-text {
+      margin-top: 20vh; /* Adjusted for smaller screens */
+      transform: translateY(-50%); /* Adjust translateY for .center-container */
+    }
+
+    /* Optionally adjust font sizes */
+    h1 {
+      font-size: 20px; /* Smaller font size for headings */
+    }
+
+    p {
+      font-size: 14px; /* Smaller font size for paragraphs */
+    }
   }
 </style>
 
 <% @phase = current_user&.phase || 1 %>
 <%= render "shared/navbar" %>
 
-<% if @question.order_nr == 6 %>
+<% if @question.order_nr == 10 %>
 
 <div class="center-text">
   <h1>Whouhouw, you answered everything!</h1>
+  <br>
+  <h1>We are so looking forward to party with you</h1>
 <div>
 <% else %>
 <div class="center-container">
-  <p>Hello <%= @user.name %>! Let's play a game to decide on your seating during dinner.</p>
-  <h1><%= @question.question_text %></h1>
+  <p>Hello <%= @user.name %>! Let's play a game to decide on your seating during dinner based on your answers.</p>
+  <h1><%= raw @question.question_text %></h1>
   <%= form_tag(update_current_question_path, method: :put, id: 'question-form') do %>
     <div class="image-row">
       <% @question.options.each do |option| %>
-      <%= option%>
         <div class="clickable-image-container">
           <%= image_tag option, class: 'option-image img-fluid rounded clickable-image', data: { value: option } %>
           <%= radio_button_tag :selected_option, option, class: 'option-radio', style: 'display:none;' %>

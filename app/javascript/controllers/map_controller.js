@@ -61,12 +61,21 @@ export default class extends Controller {
   #flyToFirstMarker() {
   if (this.markersValue.length > 1) {
     const bounds = new mapboxgl.LngLatBounds();
-    bounds.extend([this.markersValue[0].lng, this.markersValue[0].lat]);
-    bounds.extend([this.markersValue[1].lng, this.markersValue[1].lat]);
+    bounds.extend([51.27627016821964, 6.110376858927405]);
+    bounds.extend([51.18871576790626, 5.98337951803339]);
+    
+    let paddingValue;
 
-    const isMobile = window.innerWidth <= 767; // Check if it's a mobile device
-    const paddingValue = isMobile ? 50 : {top: 150, bottom:150, left: 150, right: 150}; // Smaller padding for mobile
-
+    if (window.innerWidth <= 767) {
+      // Mobile devices
+      paddingValue = 50;
+    } else if (window.innerWidth > 767 && window.innerWidth <= 1024) {
+      // Intermediate screens - tablets and small desktops
+      paddingValue = {top: 100, bottom: 100, left: 100, right: 100};
+    } else {
+      // Larger screens
+      paddingValue = {top: 150, bottom:150, left: 150, right: 150};
+    }
     setTimeout(() => {
       this.map.fitBounds(bounds, {
         padding: paddingValue,

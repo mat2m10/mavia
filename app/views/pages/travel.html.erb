@@ -124,7 +124,7 @@
 <%= javascript_include_tag 'refresh' %>
 <% @phase = current_user&.phase || 1 %>
 <%= render "shared/navbar" %>
-<% if @phase == 1 || 2%>
+<% if @phase == 1%>
   <div class="travelpage">
     <div class="subtravelpage1 w-100">
       <!-- Bootstrap Carousel -->
@@ -155,6 +155,24 @@
       <div id="travel_map" class="map-container"><div class="map text-center" style="width: 100%; height: 100%; border-radius:20px;"
           data-controller="map"
           data-map-markers-value='<%= @markers.map { |marker| marker.merge(image_url: asset_path(marker[:image_name])) }.to_json %>'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @phase == 2 %>
+  <div class="travelpage">
+    <div class="subtravelpage1 w-100">
+      <%= image_tag('motor_muis.jpg', class: 'd-block w-100', alt: 'First slide', style: "border-radius: 20px; margin:2px;") %>
+    </div>
+    <div class="subtravelpage2">
+      <!-- Display the "thank you" message -->
+      <div id="travel_map" class="map-container">
+        <div class="map text-center" style="width: 100%; height: 100%; border-radius:20px;"
+          data-controller="map"
+          data-map-markers-value='<%= @markers2.map { |marker| marker.merge(image_url: asset_path(marker[:image_name])) }.to_json %>'
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>

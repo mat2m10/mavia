@@ -3,40 +3,63 @@ Question.destroy_all
 
 
 Question.create!(
-  question_text: 'Salt or Paprika',
+  question_text: "If you need to buy a bag of crisps right now<br> would you go for <br> <b>Salt or Paprika?<b>",
   options: ['01_salt','01_paprika'],
   order_nr: 1
 )
 
 Question.create!(
-  question_text: 'Which pokemon',
+  question_text: "It's dangerous to go alone!<br>Which creature would you choose<br><b>charmander, squirtle or bulbasaur?<b>",
   options: ['02_charmander','02_squirtle','02_bulbasaur'],
   order_nr: 2
 )
 
 Question.create!(
-  question_text: 'Which hogwarts house',
+  question_text: 'Which hogwarts house would you be assigned to?<br>',
   options: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin'],
   order_nr: 3
 )
 
 Question.create!(
-  question_text: 'Where would you rather be friday evening',
+  question_text: 'Where would you rather be friday evening<br><b>a pub, clubbing until 5<b> or <b>a boardgame evening?<b>',
   options: ['04_browncafe','04_clubbing','04_tabletop'],
   order_nr: 4
 )
 # Add more questions as needed
 Question.create!(
-  question_text: 'What do you prefer?',
-  options: ['whisky','gin'],
+  question_text: 'What would be your favored drink?',
+  options: ['05_whisky','05_gin','05_wine','05_beer','05_coffee','05_tea'],
   order_nr: 5
 )
 Question.create!(
-  question_text: 'the end',
-  options: ['NaN','NaN'],
+  question_text: 'What is most likely to exist?',
+  options: ['06_ghost','06_god','06_nessie','06_reptilian','06_aliens'],
   order_nr: 6
 )
 
+Question.create!(
+  question_text: 'What is the best?',
+  options: ['07_vanilla','07_pistachio','07_chocolate','07_pepper'],
+  order_nr: 7
+)
+
+Question.create!(
+  question_text: 'In the past question you thought that we where talking about what?',
+  options: ['08_spices','08_icecream','08_sex'],
+  order_nr: 8
+)
+
+Question.create!(
+  question_text: 'In which language are you most comfortable conversing in?',
+  options: ['09_germany','09_france','09_belgium','09_netherlands','09_unitedkingdom'],
+  order_nr: 9
+)
+
+Question.create!(
+  question_text: 'Who do you prefer?',
+  options: ['10_love_math','10_love_liv'],
+  order_nr: 10
+)
 # Add 11 more questions with similar structure
 # ...
 
