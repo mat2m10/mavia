@@ -60,6 +60,12 @@ Question.create!(
   options: ['10_love_math','10_love_liv'],
   order_nr: 10
 )
+
+Question.create!(
+  question_text: 'Who do you prefer?',
+  options: ['10_love_math','10_love_liv'],
+  order_nr: 11
+)
 # Add 11 more questions with similar structure
 # ...
 
