@@ -44,26 +44,26 @@
     transform: translateY(0%); /* Adjust or remove as needed to align content */
   }
 
-  /* Adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .center-container, .center-text {
-      padding-top: 60px; /* Ensure padding is sufficient for the navbar */
-      /* Other responsive adjustments */
-    }
-  }
   
   /* Media query for screens narrower than 768px */
   @media (max-width: 768px) {
     .clickable-image-container {
       width: 100px; /* Smaller width */
       height: 100px; /* Smaller height */
-      padding: 10px; /* Adjusted padding */
+      padding: 5px; /* Adjusted padding */
     }
-
+  .image-row {
+    flex-wrap: wrap; /* Allow items to wrap to the next line as needed */
+    justify-content: center; /* Keep items centered */
+  }
     .center-container, .center-text {
       margin-top: 20vh; /* Adjusted for smaller screens */
       transform: translateY(-50%); /* Adjust translateY for .center-container */
     }
+  .center-container, .center-text {
+    margin-top: 20vh; /* Adjusted for smaller screens */
+    transform: translateY(-50%);
+  }
 
     /* Optionally adjust font sizes */
     h1 {
