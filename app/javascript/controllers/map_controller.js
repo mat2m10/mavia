@@ -1,4 +1,3 @@
-
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 //= require refresh
@@ -61,8 +60,8 @@ export default class extends Controller {
   #flyToFirstMarker() {
   if (this.markersValue.length > 1) {
     const bounds = new mapboxgl.LngLatBounds();
-    bounds.extend([51.27627016821964, 6.110376858927405]);
     bounds.extend([51.18871576790626, 5.98337951803339]);
+    bounds.extend([51.27627016821964, 6.110376858927405]);
     
     let paddingValue;
 
