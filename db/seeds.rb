@@ -44,7 +44,7 @@ Question.create!(
 )
 
 Question.create!(
-  question_text: 'In the past question you thought that we were talking about what?',
+  question_text: 'In the previous question you thought that we were talking about what?',
   options: ['08_spices','08_icecream','08_sex'],
   order_nr: 8
 )
