@@ -680,21 +680,24 @@ I would anyway recommend the plus-one to connect here with his.her.them.theyre e
     </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const yesButton = document.getElementById('plus_one_yes');
-    const noButton = document.getElementById('plus_one_no');
-    const nameGroup = document.getElementById('plus_one_name_group');
+document.addEventListener("DOMContentLoaded", function() {
+  const yesButton = document.getElementById('plus_one_yes');
+  const noButton = document.getElementById('plus_one_no');
+  const nameGroup = document.getElementById('plus_one_name_group');
 
-    yesButton.addEventListener('change', function() {
-      if (this.checked) {
-        nameGroup.style.display = 'block';
-      }
-    });
+  function togglePlusOneNameGroup() {
+    if (yesButton.checked) {
+      nameGroup.style.display = 'block';
+    } else {
+      nameGroup.style.display = 'none';
+    }
+  }
 
-    noButton.addEventListener('change', function() {
-      if (this.checked) {
-        nameGroup.style.display = 'none';
-      }
-    });
-  });
+  yesButton.addEventListener('change', togglePlusOneNameGroup);
+  noButton.addEventListener('change', togglePlusOneNameGroup);
+
+  // Ensure correct display on page load based on current state
+  togglePlusOneNameGroup();
+});
+
 </script>

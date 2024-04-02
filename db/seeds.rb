@@ -15,7 +15,7 @@ Question.create!(
 )
 
 Question.create!(
-  question_text: 'Which hogwarts house would you be assigned to?<br>',
+  question_text: 'Which hogwarts house would you be assigned to?<br>gryffondor, ravenclaw, huffelpuf or slitherin',
   options: ['03_gryffondor','03_ravenclaw','03_huffelpuf','03_slitherin'],
   order_nr: 3
 )
@@ -51,7 +51,7 @@ Question.create!(
 
 Question.create!(
   question_text: 'In which language are you most comfortable conversing in?',
-  options: ['09_germany','09_france','09_belgium','09_netherlands','09_unitedkingdom'],
+  options: ['09_germany','09_france','09_netherlands','09_unitedkingdom'],
   order_nr: 9
 )
 

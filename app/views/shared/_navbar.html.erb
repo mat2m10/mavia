@@ -55,11 +55,23 @@
 @media screen and (max-width: 576px) {
   .navbar-collapse {
     display: none;
+    text-align: left; /* Aligns text to the left */
   }
 
   /* Show the hamburger icon on small screens */
   .hamburger-icon {
     display: block;
+  }
+    .navbar-nav {
+    width: 100%; /* Ensures the navbar takes full width */
+  }
+
+  .navbar-nav ul {
+    padding-left: 0; /* Removes padding to align items to the edge */
+  }
+
+  .nav-item {
+    text-align: left; /* Aligns the text of nav items to the left */
   }
 }
 </style>
