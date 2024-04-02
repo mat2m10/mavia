@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   
     def home
         @name = current_user.name
+        temp = params[:screenSizeFlag].to_i
     end
 
 
