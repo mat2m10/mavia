@@ -74,6 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       temp = params[:screenSizeFlag].to_i
       @submitted = true
       session[:submitted] = true
+      current_user.update(has_answered_form: 'yes')
       redirect_to root_path, notice: 'User data updated successfully.'
     else
       render :edit
@@ -215,7 +216,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :family_name, :address, :address_nr, :pays, :city, :phase,
       :apartment, :postal_code, :vip, :personal_message_us,
       :personal_message_them, :friday, :screenSizeFlag, :ceremony, :dietary_restriction, :answer_friday, :answer_ceremony, :answer_reception, :answer_diner,
-      :answered_total, :plusones, numericality: { greater_than_or_equal_to: 0 }
+      :answered_total, :plusones, :has_answered_form, numericality: { greater_than_or_equal_to: 0 }
     )
   end
 

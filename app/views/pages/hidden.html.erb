@@ -83,6 +83,7 @@
         <th>Answer ceremony?</th>
         <th>Answer reception?</th>
         <th>Answer dinner?</th>
+        <th>Answer the invition?</th>
 
         <th>Dietary Restriction</th>
         <th>Plus ones?</th>
@@ -146,6 +147,12 @@
         <%= button_to user.answer_diner, user_registrations_answerdinner_path(user), method: :put, remote: true, class: "btn btn-sm btn-toggle", id: "dinner_answer-button-#{user.id}" , style: "background-color: green;"%>
       </td>
       <% end %>
+      <% if user.has_answered_form == 'yes' %>
+          <td><span class="custom-badge badge-margin"><%= user.has_answered_form %></span></td>
+      <% else %>
+          <td><%= user.has_answered_form %></td>
+      <% end %>
+            
       <td><%= user.dietary_restriction %></td>
       <td><%= user.plusones %></td>
       <td>
