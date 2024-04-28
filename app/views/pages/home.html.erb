@@ -650,28 +650,6 @@
     </div>
 
 
-<div class="end-button">
-<div class="form-group">
-  <%= f.label :plus_one_attending, 'Are you also answering for a plus-one?', class: 'control-label' %>
-  <div class="form-check">
-    <%= radio_button_tag(:plus_one_attending, 'yes', false, class: 'form-check-input', id: 'plus_one_yes') %>
-    <%= label_tag(:plus_one_yes, 'Yes', class: 'form-check-label') %>
-  </div>
-  <div class="form-check">
-    <%= radio_button_tag(:plus_one_attending, 'no', true, class: 'form-check-input', id: 'plus_one_no') %>
-    <%= label_tag(:plus_one_no, 'No', class: 'form-check-label') %>
-  </div>
-</div>
-
-<div class="form-group" id="plus_one_name_group" style="display: none;">
-We recommend your plus one to also answer with their email so that they can also play the table seating game
-<br>
-<br>
-
-  <%= f.label :plusones, "Plus-one's name:", class: 'control-label' %>
-  <%= f.text_field :plusones, class: 'form-control' %>
-</div>
-
     <% if !has_answered %>
       <!-- If has_answered is not true, show the save information button -->
       <div class="form-actions" style="justify-content: center; align-items: center">
