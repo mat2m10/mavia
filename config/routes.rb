@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get "guests", to: "guests#index"
   get "guests/:id", to: "guests#show"
-
+  get "couples", to: "pages#couples"
   devise_scope :user do
     # Keep the 'seating' route within the users/registrations scope
     get 'seating', to: 'users/registrations#seating'

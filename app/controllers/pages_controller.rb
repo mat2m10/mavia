@@ -23,6 +23,9 @@ class PagesController < ApplicationController
         end
     end
 
+    def couples
+        @text = 'hey'
+    end
     def rsvp
     end
 
