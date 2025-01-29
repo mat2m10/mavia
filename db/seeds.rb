@@ -70,7 +70,6 @@ Question.create!(
 # ...
 
 
-=begin
 User.destroy_all
 matthieu = User.create!(
   email: 'mat@dh.com',
@@ -1975,6 +1974,5 @@ User.create!(
   phase: 2,
   is_admin: true
 )
-=end
 
 puts 'Seeds created successfully!'

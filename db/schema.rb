@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_114842) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "options", default: [], array: true
-    t.integer "answered_total", default: 0
     t.integer "order_nr", default: 99
   end
 
